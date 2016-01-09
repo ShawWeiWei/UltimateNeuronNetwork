@@ -39,6 +39,15 @@
     <ClInclude Include="Connection.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ExcitatoryCoupleWithNoise.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrangeNumber.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -60,6 +69,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Connection.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcitatoryCoupleWithNoise.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrangeNumber.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

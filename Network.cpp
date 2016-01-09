@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "Network.h"
 #include "ML.h"
+#include "Constants.h"
 #include <stdio.h>
 #include <direct.h>
 #include <fstream>
@@ -10,7 +11,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-#define PI 3.1415926535898
+
 
 
 template <typename Node, template<typename> class CoupleType>
