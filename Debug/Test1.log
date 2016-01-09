@@ -1,0 +1,65 @@
+﻿生成启动时间为 2015/11/28 13:52:45。
+     1>项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Test1.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Connection.cpp CoupleWithInhibition.cpp ExcitatoryCouple.cpp ML.cpp Network.cpp Test1.cpp
+         Test1.cpp
+     1>f:\graduation thesis\test1\test1\excitatorycouple.cpp(43): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\excitatorycouple.cpp(29): 编译类 模板 成员函数“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int)”时
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+                 f:\graduation thesis\test1\test1\test1.cpp(15): 参见对正在编译的函数 模板 实例化“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int)”的引用
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+                 f:\graduation thesis\test1\test1\test1.cpp(15): 参见对正在编译的类 模板 实例化“ExcitatoryCouple<Node>”的引用
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+     1>f:\graduation thesis\test1\test1\couplewithinhibition.cpp(18): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\couplewithinhibition.cpp(7): 编译类 模板 成员函数“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”时
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+                 f:\graduation thesis\test1\test1\test1.cpp(33): 参见对正在编译的函数 模板 实例化“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”的引用
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+                 f:\graduation thesis\test1\test1\test1.cpp(33): 参见对正在编译的类 模板 实例化“CoupleWithInhibition<Node>”的引用
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+     1>f:\graduation thesis\test1\test1\couplewithinhibition.cpp(25): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+         Network.cpp
+         ExcitatoryCouple.cpp
+         CoupleWithInhibition.cpp
+         Connection.cpp
+     1>f:\graduation thesis\test1\test1\connection.cpp(15): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+     1>f:\graduation thesis\test1\test1\connection.cpp(16): warning C4101: “nTotal”: 未引用的局部变量
+     1>f:\graduation thesis\test1\test1\connection.cpp(55): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+     1>f:\graduation thesis\test1\test1\connection.cpp(131): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+     1>f:\graduation thesis\test1\test1\connection.cpp(168): warning C4101: “iElement”: 未引用的局部变量
+         正在生成代码...
+         正在编译...
+         ML.cpp
+         正在生成代码...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Graduation Thesis\Test1\Debug\Test1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\Graduation Thesis\Test1\Debug\Test1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Graduation Thesis\Test1\Debug\Test1.lib" /MACHINE:X86 Debug\Connection.obj
+         Debug\CoupleWithInhibition.obj
+         Debug\ExcitatoryCouple.obj
+         Debug\ML.obj
+         Debug\Network.obj
+         Debug\stdafx.obj
+         Debug\Test1.obj
+         Test1.vcxproj -> F:\Graduation Thesis\Test1\Debug\Test1.exe
+     1>已完成生成项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:04.89
