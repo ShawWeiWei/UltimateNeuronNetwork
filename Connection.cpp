@@ -29,13 +29,10 @@ void createRandomConnection(int node,vector<vector<int>> &conVec,char *conSpec,c
 }
 
 void buildSquare(int nNode,vector<vector<int>> &aCon){
-	aCon.clear();
-	vector<int> vec;
-	for(int i=0;i<nNode;++i){
-		aCon.push_back(vec);
-	}
+	aCon.resize(nNode);
 	int iRow,iColumn;
-	int iDimension=sqrt(nNode)+0.5;
+	int iDimension=sqrt_int(nNode);
+
 	int nTotal;
 
 	for(int i=0;i<nNode;++i){
@@ -68,7 +65,7 @@ void buildSquare(int nNode,vector<vector<int>> &aCon){
 }
 
 void _buildSquareMatrix(bool ** RelationMatrix,int node){
-	int dimension=sqrt(node)+0.5;
+	int dimension=sqrt_int(node);
 	int row,column;
 	for(int i=0;i<node;++i){
 		row=i/dimension;
@@ -100,24 +97,18 @@ void _buildSquareMatrix(bool ** RelationMatrix,int node){
 }
 
 void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
-//	sprintf_s(m_sName,40,"SmallWorld_%.2f",_rewiring);
-	aCon.clear();
-	vector<int> vec;
-	for(int i=0;i<nNode;++i){
-		aCon.push_back(vec);
-	}
-
-	int nDimension=sqrt(nNode)+0.5;
+	aCon.resize(nNode);
+	int nDimension=sqrt_int(nNode);
+	
 	bool **RelationMatrix=NULL;
 	create2dvector(RelationMatrix,nNode,nNode);
 	_buildSquareMatrix(RelationMatrix,nNode);
 	
-
 	srand((unsigned int)100);
 	int iElement;
 	for(int i=0;i<nNode;++i){
 		for(int j=i+1;j<nNode;++j){
-			if(RelationMatrix[i][j]&&(rand()/(double)RAND_MAX)<_rewiring){
+			if(RelationMatrix[i][j]&&(_rewiring>Uniform_01())){
 				RelationMatrix[i][j]=false;
 				RelationMatrix[j][i]=false;
 				while(1){
@@ -145,54 +136,18 @@ void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
 }
 
 void buildSparser(int nNode,double _rewiring,vector<vector<int>> &aCon){
-//	sprintf_s(m_sName,40,"SmallWorld_%.2f",_rewiring);
-	aCon.clear();
-	vector<int> vec;
-	for(int i=0;i<nNode;++i){
-		aCon.push_back(vec);
-	}
+	aCon.resize(nNode);
+	int nDimension=sqrt_int(nNode);
 
-	int nDimension=sqrt(nNode)+0.5;
-	bool **RelationMatrix=new bool*[nNode];
-	RelationMatrix[0]=new bool[nNode*nNode];
-	for(int i=1;i<nNode;++i){
-		RelationMatrix[i]=RelationMatrix[i-1]+nNode;
-	}
-	memset(RelationMatrix[0],0,sizeof(bool)*nNode*nNode);
-	int iRow,iColumn;
-	for(int i=0;i<nNode;++i){
-		iRow=i/nDimension;
-		iColumn=i%nDimension;
-		//up
-		if(iRow>0){
-			RelationMatrix[i][(iRow-1)*nDimension+iColumn]=true;
-			RelationMatrix[(iRow-1)*nDimension+iColumn][i]=true;
-		}
-
-		//left
-		if(iColumn>0){
-			RelationMatrix[i][iRow*nDimension+iColumn-1]=true;
-			RelationMatrix[iRow*nDimension+iColumn-1][i]=true;
-		}
-
-		//right
-		if(iColumn<nDimension-1){
-			RelationMatrix[i][iRow*nDimension+iColumn+1]=true;
-			RelationMatrix[iRow*nDimension+iColumn+1][i]=true;
-		}
-
-		//down
-		if(iRow<nDimension-1){
-			RelationMatrix[i][(iRow+1)*nDimension+iColumn]=true;
-			RelationMatrix[(iRow+1)*nDimension+iColumn][i]=true;
-		}
-	}
+	bool **RelationMatrix=NULL;
+	create2dvector(RelationMatrix,nNode,nNode);
+	_buildSquareMatrix(RelationMatrix,nNode);
 
 	srand((unsigned int)100);
-	int iElement;
+
 	for(int i=0;i<nNode;++i){
 		for(int j=i+1;j<nNode;++j){
-			if(RelationMatrix[i][j]&&(rand()/(double)RAND_MAX)<_rewiring){
+			if(RelationMatrix[i][j]&&(_rewiring>Uniform_01())){
 				RelationMatrix[i][j]=false;
 				RelationMatrix[j][i]=false;
 			}
@@ -206,6 +161,5 @@ void buildSparser(int nNode,double _rewiring,vector<vector<int>> &aCon){
 			}
 		}
 	}
-	delete []RelationMatrix[0];
-	delete []RelationMatrix;
+	delete2dvector(RelationMatrix);
 }

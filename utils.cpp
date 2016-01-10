@@ -22,20 +22,26 @@
 
 //return -1 if not exists
 int sqrt_int(int num){
+	int retVal;
 	if(num<1){
-		return -1;
+		retVal=-1;
 	}
 	else{
 		int a=sqrt((double)num);
 		if((a*a)==num){
-			return a;
+			retVal=a;
 		}else if(((a-1)*(a-1))==num){
-			return a-1;
+			retVal=a-1;
 		}else if(((a+1)*(a+1))==num){
-			return a+1;
+			retVal=a+1;
 		}else{
-			return -1;
+			retVal=-1;
 		}
+	}
+	if(retVal==-1){
+		throw("Not A Square Of Integer!");
+	}else{
+		return retVal;
 	}
 }
 

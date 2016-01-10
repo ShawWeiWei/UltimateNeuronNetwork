@@ -2,6 +2,7 @@
 #include "ExcitatoryCoupleWithNoise.h"
 #include "Connection.h"
 #include "ArrangeNumber.h"
+#include "utils.h"
 #include <algorithm>
 #include "stdlib.h"
 template <typename Node>
@@ -109,24 +110,9 @@ void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *pCouple){
 	}
 
 	//¸üÐÂÔëÉù
-	updateNoise();
+	updateNoise(noise,nNode,noise_intensity);
 	for(int i=0;i<nNode;++i){
 		pCouple[i]+=noise[i];
 	}
 }
 
-template <typename Node>
-void ExcitatoryCoupleWithNoise<Node>::updateNoise(){
-	double ran1,ran2;
-	double log_temp,angle_temp;
-	for(int i=0;i<nNode;i+=2){  //m_nNeuron must be even.
-		ran1=Uniform_01();
-		ran2=Uniform_01();
-		log_temp=log(ran1);
-		angle_temp=2.0*PI*ran2;
-		//(m_noiseintensity/sqrt(sm_dt))*//*sqrt(2.0*m_noiseintensity)
-		sm_gNoise[i]=sqrt(-4.0*m_noiseintensity*log_temp)*cos(angle_temp);
-		//(m_noiseintensity/sqrt(sm_dt))*//*sqrt(2.0*m_noiseintensity)
-		sm_gNoise[i+1]=sqrt(-4.0*m_noiseintensity*log_temp)*sin(angle_temp);
-	}
-}
