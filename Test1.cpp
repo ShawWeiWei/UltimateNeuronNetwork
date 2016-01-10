@@ -49,10 +49,12 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	int aML1[]={1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,95,99};
 	int nML1=sizeof(aML1)/sizeof(int);
-	double aGc[]={0.27};
-	int nGc=sizeof(aGc)/sizeof(double);
+	vector<vector<int>> vec(10);
+
+//	double aGc[]={0.27};
+//	int nGc=sizeof(aGc)/sizeof(double);
 //	HeterInhibitory5(aML1,nML1,aGc,nGc);
-	HeterExcitatory(aML1,nML1,aGc,nGc);
+//	HeterExcitatory(aML1,nML1,aGc,nGc);
 	return 0;
 }
 

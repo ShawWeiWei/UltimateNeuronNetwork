@@ -1,8 +1,32 @@
 #include "stdafx.h"
 #include "Connection.h"
+#include "utils.h"
 #include <vector>
 using namespace std;
 
+void createRegularConnection(int node,vector<vector<int>> &conVec,char *conSpec,char *type){
+	if(0==strcmp("Square",type)){
+		buildSquare(node,conVec);
+		sprintf_s(conSpec,20,"%s","Square");
+	}
+	else{
+		throw("wrong input");
+	}
+}
+
+void createRandomConnection(int node,vector<vector<int>> &conVec,char *conSpec,char *type,double _rewiring){
+	if(0==strcmp("SmallWorld",type)){
+		buildSmallWorld(node,_rewiring,conVec);
+		sprintf_s(conSpec,20,"%s_%.5lf",type,_rewiring);
+	}
+	else if(0==strcmp("Sparser",type)){
+		buildSparser(node,_rewiring,conVec);
+		sprintf_s(conSpec,20,"%s_%.5lf",type,_rewiring);
+	}
+	else{
+		throw("Invalid input!");
+	}
+}
 
 void buildSquare(int nNode,vector<vector<int>> &aCon){
 	aCon.clear();
@@ -84,13 +108,9 @@ void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
 	}
 
 	int nDimension=sqrt(nNode)+0.5;
-	bool **RelationMatrix=new bool*[nNode];
-	RelationMatrix[0]=new bool[nNode*nNode];
-	for(int i=1;i<nNode;++i){
-		RelationMatrix[i]=RelationMatrix[i-1]+nNode;
-	}
-	memset(RelationMatrix[0],0,sizeof(bool)*nNode*nNode);
-	_buildSquareMatrix(Relation
+	bool **RelationMatrix=NULL;
+	create2dvector(RelationMatrix,nNode,nNode);
+	_buildSquareMatrix(RelationMatrix,nNode);
 	
 
 	srand((unsigned int)100);
@@ -121,8 +141,7 @@ void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
 			}
 		}
 	}
-	delete []RelationMatrix[0];
-	delete []RelationMatrix;
+	delete2dvector(RelationMatrix);
 }
 
 void buildSparser(int nNode,double _rewiring,vector<vector<int>> &aCon){

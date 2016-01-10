@@ -14,6 +14,11 @@ const double VL=-60.0;
 const double V1=-1.2;
 const double V2=18.0;
 
+const double MorrisLecar::RESTORY_CURRENT_FOR_CLASS_I = 39.7;
+const double MorrisLecar::FIRING_CURRENT_FOR_CLASS_I = 40;
+const double MorrisLecar::RESTORY_CURRENT_FOR_CLASS_II = 88.1;
+const double MorrisLecar::FIRING_CURRENT_FOR_CLASS_II = 90;
+
 MorrisLecar::MorrisLecar(){
 	SetDt(0.01);
 }

@@ -19,7 +19,7 @@ public:
 	//void makeCompositionName(char *sComposition);
 	//void makeSpecificationName(char *sSpecification);
 	void updateCouple(double *pCouple);
-
+	void updateNoise(double *pCouple);
 	int getNum()  const{
 		return nNode;
 	}

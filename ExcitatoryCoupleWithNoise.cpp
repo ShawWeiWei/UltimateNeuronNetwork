@@ -67,28 +67,12 @@ ExcitatoryCoupleWithNoise<Node>::~ExcitatoryCoupleWithNoise(){
 
 template <typename Node>
 void ExcitatoryCoupleWithNoise<Node>::createConnection(char *type){
-	if(0==strcmp("Square",type)){
-		buildSquare(nNode,aExc);
-		sprintf_s(Con,20,"%s","Square");
-	}
-	else{
-		throw("wrong input");
-	}
+	createRegularConnection(nNode,aExc,Con,type);
 }
 
 template <typename Node>
 void ExcitatoryCoupleWithNoise<Node>::createConnection(char *type,double _rewiring){
-    if(0==strcmp("SmallWorld",type)){
-		buildSmallWorld(nNode,_rewiring,aExc);
-		sprintf_s(Con,20,"%s_%.5lf",type,_rewiring);
-	}
-	else if(0==strcmp("Sparser",type)){
-		buildSparser(nNode,_rewiring,aExc);
-		sprintf_s(Con,20,"%s_%.5lf",type,_rewiring);
-	}
-	else{
-		throw("Invalid input!");
-	}
+	createRandomConnection(nNode,aExc,Con,type,_rewiring);
 }
 	
 
@@ -111,9 +95,9 @@ void ExcitatoryCoupleWithNoise<Node>::makeFileComps(char *sCouple,char *sCon,cha
 
 template <typename Node>
 void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *pCouple){
-//	memset(pCouple,0,sizeof(double)*nNeuron);
 	double sum;
 	int nExc,nTotal,iIndex;
+	//更新耦合电流
 	for(int i=0;i<nNode;++i){
 			sum=0.0;
 			nExc=aExc[i].size();
@@ -122,5 +106,27 @@ void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *pCouple){
 				sum+=1.0/(1.0+exp(-(pNode[iIndex].V-threshold)));
 			}
 			pCouple[i]=gc*(V_syn-pNode[i].V)*sum;
+	}
+
+	//更新噪声
+	updateNoise();
+	for(int i=0;i<nNode;++i){
+		pCouple[i]+=noise[i];
+	}
+}
+
+template <typename Node>
+void ExcitatoryCoupleWithNoise<Node>::updateNoise(){
+	double ran1,ran2;
+	double log_temp,angle_temp;
+	for(int i=0;i<nNode;i+=2){  //m_nNeuron must be even.
+		ran1=Uniform_01();
+		ran2=Uniform_01();
+		log_temp=log(ran1);
+		angle_temp=2.0*PI*ran2;
+		//(m_noiseintensity/sqrt(sm_dt))*//*sqrt(2.0*m_noiseintensity)
+		sm_gNoise[i]=sqrt(-4.0*m_noiseintensity*log_temp)*cos(angle_temp);
+		//(m_noiseintensity/sqrt(sm_dt))*//*sqrt(2.0*m_noiseintensity)
+		sm_gNoise[i+1]=sqrt(-4.0*m_noiseintensity*log_temp)*sin(angle_temp);
 	}
 }

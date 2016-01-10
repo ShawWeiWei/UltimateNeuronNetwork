@@ -4,10 +4,7 @@
 class MorrisLecar{
 //friend class Network<MorrisLecar,ExcitatoryCouple<MorrisLecar>>;
 public:
-	static const double RESTORY_CURRENT_FOR_CLASS_I;
-	static const double RESTORY_CURRENT_FOR_CLASS_II;
-	static const double FIRING_CURRENT_FOR_CLASS_I;
-	static const double FIRING_CURRENT_FOR_CLASS_II;
+
 	MorrisLecar(); 
 
 	~MorrisLecar();
@@ -37,6 +34,10 @@ public:
 public:
 	double V;
 	char neuron_model[15];
+	static const double RESTORY_CURRENT_FOR_CLASS_I;
+	static const double RESTORY_CURRENT_FOR_CLASS_II;
+	static const double FIRING_CURRENT_FOR_CLASS_I;
+	static const double FIRING_CURRENT_FOR_CLASS_II;
 private:	
 
 	double n;
@@ -65,7 +66,3 @@ private:
 	double dt;
 	
 };
-const double MorrisLecar::RESTORY_CURRENT_FOR_CLASS_I = 39.7;
-const double MorrisLecar::FIRING_CURRENT_FOR_CLASS_I = 40;
-const double MorrisLecar::RESTORY_CURRENT_FOR_CLASS_I = 88.1;
-const double MorrisLecar::FIRING_CURRENT_FOR_CLASS_I = 90;

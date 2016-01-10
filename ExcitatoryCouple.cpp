@@ -66,28 +66,12 @@ ExcitatoryCouple<Node>::~ExcitatoryCouple(){
 
 template <typename Node>
 void ExcitatoryCouple<Node>::createConnection(char *type){
-	if(0==strcmp("Square",type)){
-		buildSquare(nNode,aExc);
-		sprintf_s(Con,20,"%s","Square");
-	}
-	else{
-		throw("wrong input");
-	}
+
 }
 
 template <typename Node>
 void ExcitatoryCouple<Node>::createConnection(char *type,double _rewiring){
-    if(0==strcmp("SmallWorld",type)){
-		buildSmallWorld(nNode,_rewiring,aExc);
-		sprintf_s(Con,20,"%s_%.5lf",type,_rewiring);
-	}
-	else if(0==strcmp("Sparser",type)){
-		buildSparser(nNode,_rewiring,aExc);
-		sprintf_s(Con,20,"%s_%.5lf",type,_rewiring);
-	}
-	else{
-		throw("Invalid input!");
-	}
+
 }
 	
 

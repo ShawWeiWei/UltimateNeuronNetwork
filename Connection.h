@@ -2,9 +2,9 @@
 #include <vector>
 using namespace std;
 
-void createRegularConnection(vector<vector<int>> &conVec,char *type);
+void createRegularConnection(int node,vector<vector<int>> &conVec,char *conSpec,char *type);
 
-void createRandomConnection(vector<vector<int>> &conVec,char *type,double _rewiring);
+void createRandomConnection(int node,vector<vector<int>> &conVec,char *conSpec,char *type,double _rewiring);
 
 void buildSquare(int nNode,vector<vector<int>> &conVec);
 
