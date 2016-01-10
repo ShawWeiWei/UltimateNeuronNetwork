@@ -12,10 +12,6 @@ public:
 	void createConnection(char *type,double _rewiring);
 	void setCouple(double _gc,double _threshold,double _V_syn);
 	void makeFileComps(char *sCouple,char *sCon,char *sComposition,char *sSpecification);
-	//void makeCoupleName(char *sCouple);
-	//void makeConnectionName(char *sCon);
-	//void makeCompositionName(char *sComposition);
-	//void makeSpecificationName(char *sSpecification);
 	void updateCouple(double *pCouple);
 
 	int getNum()  const{

@@ -2,23 +2,11 @@
 #include "utils.h"
 #include "Constants.h"
 
+#include <algorithm>
 #include <math.h>
 #include <stdlib.h>
-//template<typename T> 
-//void create2dvector(T **_2dVector,int v1,int v2){
-//	_2dVector=new T*[v1];
-//	_2dVector[0]=new T[v1*v2];
-//	for(int i=1;i<v1;++i){
-//		_2dVector[i]=_2dVector[i-1]+v2;
-//	}
-//	memset(_2dVector[0],0,sizeof(T)*v1*v2);
-//}
-//
-//template<typename T>
-//void delete2dvector(T **_2dVector){
-//	delete [] _2dVector[0];
-//	delete [] _2dVector;
-//}
+
+
 
 //return -1 if not exists
 int sqrt_int(int num){
@@ -62,4 +50,13 @@ void updateNoise(double *noise,int node,double noise_intensity){
 
 		noise[i+1]=sqrt(-4.0*noise_intensity*log_temp)*sin(angle_temp);
 	}
+}
+
+
+void shuffleNumber(vector<int> &nums, int size){
+	nums.resize(size);
+	for(int i=0;i<size;++i){
+		nums[i]=i;
+	}
+	random_shuffle(nums.begin(),nums.end());
 }

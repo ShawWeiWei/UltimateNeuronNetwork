@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CoupleWithInhibition.h"
-
+#include "Connection.h"
 #include <algorithm>
 
 template <typename Node>
@@ -44,22 +44,9 @@ CoupleWithInhibition<Node>::~CoupleWithInhibition(){
 }
 
 template <typename Node>
-void CoupleWithInhibition<Node>::createConnection(char *type){
-	aExc.clear();
-	aInh.clear();
-	vector<int> ins;
-	for(int i=0;i<nNode;++i){
-		aExc.push_back(ins);
-		aInh.push_back(ins);
-	}
-	vector<vector<int>> vec;
-	if(0==strcmp("Square",type)){
-		buildSquare(nNode,vec);
-		sprintf_s(conn,20,"%s","Square");
-	}
-	else{
-		throw("wrong input");
-	}
+void CoupleWithInhibition<Node>::setExcInh(const vector<vector<int>>&vec){
+	aExc.resize(nNode);
+	aInh.resize(nNode);
 	for(int i=0;i<nNode;++i){
 		if(isCoupled[i]){
 			int s=vec[i].size();
@@ -75,43 +62,21 @@ void CoupleWithInhibition<Node>::createConnection(char *type){
 		}
 	}
 }
+template <typename Node>
+void CoupleWithInhibition<Node>::createConnection(char *type){
+
+	vector<vector<int>> vec;
+	createRegularConnection(nNode,vec,conn,type);
+
+	setExcInh(vec);
+}
 
 template <typename Node>
 void CoupleWithInhibition<Node>::createConnection(char *type,double _rewiring){
-	aExc.clear();
-	aInh.clear();
-	vector<int> ins;
-	for(int i=0;i<nNode;++i){
-		aExc.push_back(ins);
-		aInh.push_back(ins);
-	}
-	vector<vector<int>> vec;
-    if(0==strcmp("SmallWorld",type)){
-		buildSmallWorld(nNode,_rewiring,vec);
-		sprintf_s(conn,"%s_%.5lf",type,_rewiring);
-	}
-	else if(0==strcmp("Sparser",type)){
-		buildSparser(nNode,_rewiring,vec);
-		sprintf_s(conn,"%s_%.5lf",type,_rewiring)
-	}
-	else{
-		throw("Invalid input!");
-	}
-	for(int i=0;i<nNode;++i){
-		if(isCoupled[i]){
-			int s=vec[i].size();
-			for(int j=0;j<s++j){
-				int the_node=vec[i][j];
-				if(pNodeSyn[the_node]==Excitory){
-					aExc[i].push_back(the_node);
-				}
-				else if(pNodeSyn[the_node]==Inhibitory){
-					aInh[i].pop_back(the_node);
-				}
-			}
-		}
-	}
 
+	vector<vector<int>> vec;
+	createRandomConnection(nNode,vec,conn,type,_rewiring);
+	setExcInh(vec);
 }
 	
 
@@ -126,7 +91,6 @@ void CoupleWithInhibition<Node>::setCouple(double _gc_exc,double _gc_inh,double 
 
 template <typename Node>
 void CoupleWithInhibition<Node>::updateCouple(double *pCouple){
-//	memset(pCouple,0,sizeof(double)*nNeuron);
 	double sumExc,sumInh;
 	int nExc,nInh,iIndex;
 	for(int i=0;i<nNode;++i){

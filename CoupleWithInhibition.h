@@ -11,6 +11,7 @@ public:
 	CoupleWithInhibition(int nNeuron,int pML1,int pML2);
 	~CoupleWithInhibition();
 	void createNode();
+	void setExcInh(const vector<vector<int>> &vec);
 	void createConnection(char *type);
 	void createConnection(char *type,double _rewiring);
 	void setCouple(double _gc_exc,double _gc_inh,double _threshold,double _Vsyn_exc,double _Vsyn_inh);

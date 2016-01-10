@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+using std::vector;
 
 template<typename T> 
 void create2dvector(T **_2dVector,int v1,int v2){
@@ -21,3 +23,5 @@ int sqrt_int(int num);
 double Uniform_01();
 
 void updateNoise(double *noise,int node,double noise_intensity);
+
+void shuffleNumber(vector<int> &nums, int size);
