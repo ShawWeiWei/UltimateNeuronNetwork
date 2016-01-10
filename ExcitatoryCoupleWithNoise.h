@@ -11,7 +11,7 @@ public:
 	void createConnection(char *type,double _rewiring);
 	void setCouple(double _gc,double _threshold,double _V_syn);
 	void setNoise(double _noise_intensity){
-		noiset_intensity=_noise_intensity;
+		noise_intensity=_noise_intensity;
 	}
 	void makeFileComps(char *sCouple,char *sCon,char *sComposition,char *sSpecification);
 	//void makeCoupleName(char *sCouple);

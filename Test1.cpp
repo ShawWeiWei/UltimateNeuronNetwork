@@ -14,7 +14,7 @@
 
 void HeterExcitatory(int *aML1,int ML1_size,double *aGc,int GC_size){
 	for(int i=0;i<ML1_size;++i){
-		ExcitatoryCouple<MorrisLecar> ex(16384,aML1[i]);
+		ExcitatoryCouple<MorrisLecar> ex(16384,aML1[i],true);
 		double aP[]={0.2,0.3,0.4,0.5,0.6};
 		int sizeP=sizeof(aP)/sizeof(double);
 		for(int iP=0;iP<sizeP;++iP){
@@ -73,13 +73,15 @@ void HeterInhibitory5(int *aML1,int ML1_size,double*aGc,int GC_size){
 }
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int aML1[]={1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,95,99};
-	int nML1=sizeof(aML1)/sizeof(int);
-	vector<vector<int>> vec(12);
+	int aML1[]={1,15,30,45,60,75,90};//{1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,95,99};
 
-	vec.resize(9);
-//	double aGc[]={0.27};
-//	int nGc=sizeof(aGc)/sizeof(double);
+	int nML1=sizeof(aML1)/sizeof(int);
+
+	double aGc[]={0.001};
+	int nGc=sizeof(aGc)/sizeof(double);
+	double aNoise[]={0.1};
+	int nNoise=sizeof(aNoise)/sizeof(double);
+	HeterExcitatoryWithNoise(aML1,nML1,aGc,nGc,aNoise,nNoise);
 //	HeterInhibitory5(aML1,nML1,aGc,nGc);
 //	HeterExcitatory(aML1,nML1,aGc,nGc);
 	return 0;

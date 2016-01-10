@@ -42,9 +42,6 @@
     <ClInclude Include="ExcitatoryCoupleWithNoise.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ArrangeNumber.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Constants.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -75,9 +72,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ExcitatoryCoupleWithNoise.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ArrangeNumber.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="utils.cpp">

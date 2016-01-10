@@ -6,7 +6,7 @@ using namespace std;
 template <typename Node>
 class ExcitatoryCouple{
 public:
-	ExcitatoryCouple(int nNeuron,int pML1);
+	ExcitatoryCouple(int nNeuron,int pML1,bool isRestory);
 	~ExcitatoryCouple();
 	void createConnection(char *type);
 	void createConnection(char *type,double _rewiring);

@@ -3,13 +3,13 @@
 using std::vector;
 
 template<typename T> 
-void create2dvector(T **_2dVector,int v1,int v2){
-	_2dVector=new T*[v1];
-	_2dVector[0]=new T[v1*v2];
+void create2dvector(T ***_2dVector,int v1,int v2){
+	(*_2dVector)=new T*[v1];
+	(*_2dVector)[0]=new T[v1*v2];
 	for(int i=1;i<v1;++i){
-		_2dVector[i]=_2dVector[i-1]+v2;
+		(*_2dVector)[i]=(*_2dVector)[i-1]+v2;
 	}
-	memset(_2dVector[0],0,sizeof(T)*v1*v2);
+	memset((*_2dVector)[0],0,sizeof(T)*v1*v2);
 }
 
 template<typename T>

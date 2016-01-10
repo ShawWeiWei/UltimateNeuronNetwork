@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "ExcitatoryCoupleWithNoise.h"
 #include "Connection.h"
-#include "ArrangeNumber.h"
 #include "utils.h"
 #include <algorithm>
 #include "stdlib.h"
@@ -90,7 +89,7 @@ void ExcitatoryCoupleWithNoise<Node>::makeFileComps(char *sCouple,char *sCon,cha
 	sprintf_s(sCouple,30,"%s",coupletype);
 	sprintf_s(sCon,30,"%s",Con);
 	sprintf_s(sComposition,30,"pML1=%d%%",pTypeI);
-	sprintf_s(sSpecification,100,"gc=%.5lf_Vsyn=%.5lf_threshold=%.5lf",gc,V_syn,threshold);
+	sprintf_s(sSpecification,100,"gc=%.5lf_Vsyn=%.5lf_threshold=%.5lf_noise_intensity=%.5lf",gc,V_syn,threshold,noise_intensity);
 }
 
 

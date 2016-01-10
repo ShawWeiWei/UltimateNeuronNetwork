@@ -3,60 +3,27 @@
 #include "Connection.h"
 #include <algorithm>
 #include "stdlib.h"
-//template <typename Node>
-//ExcitatoryCouple<Node>::ExcitatoryCouple(int nNeuron,int pML1):nNode(nNeuron),pTypeI(pML1){
-//	
-//	pNode=new Node[nNode];
-//	Con=new char[20];
-//	vector<int> vec_loc(nNode);
-//	for(int i=0;i<nNode;++i){
-//		vec_loc[i]=i;
-//	}
-//	random_shuffle(vec_loc.begin(),vec_loc.end());
-//
-//	int nML1=nNode*((double)pML1/100.0);
-//	for(int i=0;i<nML1;++i){
-//		pNode[vec_loc[i]].set_class1();
-//		pNode[vec_loc[i]].SetI(40);
-//	}
-//	for(int i=nML1;i<nNode;++i){
-//		pNode[vec_loc[i]].set_class2();
-//		pNode[vec_loc[i]].SetI(90);
-//	}	
-//}
-
+#include "utils.h"
 template <typename Node>
-ExcitatoryCouple<Node>::ExcitatoryCouple(int nNeuron,int pML1):nNode(nNeuron),pTypeI(pML1){
+ExcitatoryCouple<Node>::ExcitatoryCouple(int nNeuron,int pML1,bool isRestory):nNode(nNeuron),pTypeI(pML1){
 	
 	pNode=new Node[nNode];
 	Con=new char[20];
-	//vector<int> vec_loc(nNode);
-	//for(int i=0;i<nNode;++i){
-	//	vec_loc[i]=i;
-	//}
-	//random_shuffle(vec_loc.begin(),vec_loc.end());
+	vector<int> vec_loc;
 
-	int *IsFilled=new int[nNode];
-	memset(IsFilled,0,sizeof(int)*nNode);
-	int index;
-	srand((unsigned int)100);
-	int part1=nNode*((double)pML1/100.0);
-	
-	for(int i=0;i<part1;++i){
-		index=rand()%nNode;
-		while(IsFilled[index])
-			index=rand()%nNode;
-		IsFilled[index]=1;
-		pNode[index].set_class1();
-		pNode[index].SetI(40);
+	shuffleNumber(vec_loc,nNode);
+
+	int nML1=nNode*((double)pML1/100.0);
+	for(int i=0;i<nML1;++i){
+		pNode[vec_loc[i]].set_class1();
+		pNode[vec_loc[i]].SetI(isRestory?(Node::RESTORY_CURRENT_FOR_CLASS_I):(Node::FIRING_CURRENT_FOR_CLASS_I));
 	}
-	for(int i=0;i<nNode;++i){
-		if(!IsFilled[i]){
-			pNode[i].set_class2();		
-			pNode[i].SetI(90);
-		}
-	}
+	for(int i=nML1;i<nNode;++i){
+		pNode[vec_loc[i]].set_class2();
+		pNode[vec_loc[i]].SetI(isRestory?(Node::RESTORY_CURRENT_FOR_CLASS_II):(Node::FIRING_CURRENT_FOR_CLASS_II));
+	}	
 }
+
 
 template <typename Node>
 ExcitatoryCouple<Node>::~ExcitatoryCouple(){
@@ -66,12 +33,12 @@ ExcitatoryCouple<Node>::~ExcitatoryCouple(){
 
 template <typename Node>
 void ExcitatoryCouple<Node>::createConnection(char *type){
-
+	createRegularConnection(nNode,aExc,Con,type);
 }
 
 template <typename Node>
 void ExcitatoryCouple<Node>::createConnection(char *type,double _rewiring){
-
+	createRandomConnection(nNode,aExc,Con,type,_rewiring);
 }
 	
 
@@ -94,7 +61,6 @@ void ExcitatoryCouple<Node>::makeFileComps(char *sCouple,char *sCon,char *sCompo
 
 template <typename Node>
 void ExcitatoryCouple<Node>::updateCouple(double *pCouple){
-//	memset(pCouple,0,sizeof(double)*nNeuron);
 	double sum;
 	int nExc,nTotal,iIndex;
 	for(int i=0;i<nNode;++i){

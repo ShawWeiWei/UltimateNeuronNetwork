@@ -101,7 +101,7 @@ void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
 	int nDimension=sqrt_int(nNode);
 	
 	bool **RelationMatrix=NULL;
-	create2dvector(RelationMatrix,nNode,nNode);
+	create2dvector(&RelationMatrix,nNode,nNode);
 	_buildSquareMatrix(RelationMatrix,nNode);
 	
 	srand((unsigned int)100);
@@ -140,7 +140,7 @@ void buildSparser(int nNode,double _rewiring,vector<vector<int>> &aCon){
 	int nDimension=sqrt_int(nNode);
 
 	bool **RelationMatrix=NULL;
-	create2dvector(RelationMatrix,nNode,nNode);
+	create2dvector(&RelationMatrix,nNode,nNode);
 	_buildSquareMatrix(RelationMatrix,nNode);
 
 	srand((unsigned int)100);
