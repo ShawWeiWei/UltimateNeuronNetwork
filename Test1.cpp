@@ -7,6 +7,8 @@
 #include "ExcitatoryCouple.cpp"
 #include "CoupleWithInhibition.h"
 #include "CoupleWithInhibition.cpp"
+#include "ExcitatoryCoupleWithNoise.h"
+#include "ExcitatoryCoupleWithNoise.cpp"
 #include "Network.h"
 #include "Network.cpp"
 
@@ -33,6 +35,30 @@ void HeterExcitatory(int *aML1,int ML1_size,double *aGc,int GC_size){
 	}
 }
 
+void HeterExcitatoryWithNoise(int *aML1,int ML1_size,double*aGc,int GC_size,double *aNoise,int NOISE_size){
+for(int i=0;i<ML1_size;++i){
+		ExcitatoryCoupleWithNoise<MorrisLecar> ex(16384,aML1[i],true);
+		double aP[]={0.2,0.3,0.4,0.5,0.6};
+		int sizeP=sizeof(aP)/sizeof(double);
+		for(int iP=0;iP<sizeP;++iP){
+			ex.createConnection("Sparser",aP[iP]);
+			for(int j=0;j<GC_size;++j){
+				ex.setCouple(aGc[j],-25,36);
+				for(int iN=0;iN<NOISE_size;++iN){
+					ex.setNoise(aNoise[iN]);
+					Network<MorrisLecar,ExcitatoryCoupleWithNoise> net(&ex);
+					//net.OutputSpikingIndex();
+					//net.OutputAverISI();
+					//net.OutputCV();
+					//net.OutputPhaseAmplitude();
+					//net.OutputAverISIForOneAndTwo();
+					//net.OutputCVForOneAndTwo();
+					net.SpiralWave();
+				}
+			}
+		}
+	}
+}
 void HeterInhibitory5(int *aML1,int ML1_size,double*aGc,int GC_size){
 	for(int i=0;i<ML1_size;++i){
 		CoupleWithInhibition<MorrisLecar> in(16384,aML1[i],95-aML1[i]);
