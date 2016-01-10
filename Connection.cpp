@@ -5,7 +5,6 @@ using namespace std;
 
 
 void buildSquare(int nNode,vector<vector<int>> &aCon){
-//	sprintf_s(m_sName,40,"Square");
 	aCon.clear();
 	vector<int> vec;
 	for(int i=0;i<nNode;++i){
@@ -44,6 +43,38 @@ void buildSquare(int nNode,vector<vector<int>> &aCon){
 	}
 }
 
+void _buildSquareMatrix(bool ** RelationMatrix,int node){
+	int dimension=sqrt(node)+0.5;
+	int row,column;
+	for(int i=0;i<node;++i){
+		row=i/dimension;
+		column=i%dimension;
+		//up
+		if(row>0){
+			RelationMatrix[i][(row-1)*dimension+column]=true;
+			RelationMatrix[(row-1)*dimension+column][i]=true;
+		}
+
+		//left
+		if(column>0){
+			RelationMatrix[i][row*dimension+column-1]=true;
+			RelationMatrix[row*dimension+column-1][i]=true;
+		}
+
+		//right
+		if(column<dimension-1){
+			RelationMatrix[i][row*dimension+column+1]=true;
+			RelationMatrix[row*dimension+column+1][i]=true;
+		}
+
+		//down
+		if(row<dimension-1){
+			RelationMatrix[i][(row+1)*dimension+column]=true;
+			RelationMatrix[(row+1)*dimension+column][i]=true;
+		}
+	}
+}
+
 void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
 //	sprintf_s(m_sName,40,"SmallWorld_%.2f",_rewiring);
 	aCon.clear();
@@ -59,34 +90,8 @@ void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
 		RelationMatrix[i]=RelationMatrix[i-1]+nNode;
 	}
 	memset(RelationMatrix[0],0,sizeof(bool)*nNode*nNode);
-	int iRow,iColumn;
-	for(int i=0;i<nNode;++i){
-		iRow=i/nDimension;
-		iColumn=i%nDimension;
-		//up
-		if(iRow>0){
-			RelationMatrix[i][(iRow-1)*nDimension+iColumn]=true;
-			RelationMatrix[(iRow-1)*nDimension+iColumn][i]=true;
-		}
-
-		//left
-		if(iColumn>0){
-			RelationMatrix[i][iRow*nDimension+iColumn-1]=true;
-			RelationMatrix[iRow*nDimension+iColumn-1][i]=true;
-		}
-
-		//right
-		if(iColumn<nDimension-1){
-			RelationMatrix[i][iRow*nDimension+iColumn+1]=true;
-			RelationMatrix[iRow*nDimension+iColumn+1][i]=true;
-		}
-
-		//down
-		if(iRow<nDimension-1){
-			RelationMatrix[i][(iRow+1)*nDimension+iColumn]=true;
-			RelationMatrix[(iRow+1)*nDimension+iColumn][i]=true;
-		}
-	}
+	_buildSquareMatrix(Relation
+	
 
 	srand((unsigned int)100);
 	int iElement;

@@ -39,4 +39,5 @@ private:
 	double V_syn;
 	vector<vector<int>> aExc;
 	double noise_intensity;
+	double *noise;
 };

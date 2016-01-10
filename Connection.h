@@ -2,9 +2,14 @@
 #include <vector>
 using namespace std;
 
+void createRegularConnection(vector<vector<int>> &conVec,char *type);
 
-void buildSquare(int nNode,vector<vector<int>> &aCon);
+void createRandomConnection(vector<vector<int>> &conVec,char *type,double _rewiring);
 
-void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon);
+void buildSquare(int nNode,vector<vector<int>> &conVec);
 
-void buildSparser(int nNode,double _rewiring,vector<vector<int>> &aCon);
+void _buildSquareMatrix(bool ** relationMatrix,int node);
+
+void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &conVec);
+
+void buildSparser(int nNode,double _rewiring,vector<vector<int>> &conVec);
