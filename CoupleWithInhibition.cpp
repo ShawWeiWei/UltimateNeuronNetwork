@@ -18,14 +18,14 @@ CoupleWithInhibition<Node>::CoupleWithInhibition(int nNeuron,int pML1,int pML2):
 	int nML1=nNode*((double)pML1/100.0);
 	for(int i=0;i<nML1;++i){
 		pNode[vec_loc[i]].set_class1();
-		pNode[vec_loc[i]].SetI(40);
+		pNode[vec_loc[i]].SetI(39.7);
 		pNodeSyn[vec_loc[i]]=Excitory;
 		isCoupled[vec_loc[i]]=true;
 	}
 	int nML2=nNode*((double)pML2/100.0);
 	for(int i=nML1;i<nML1+nML2;++i){
 		pNode[vec_loc[i]].set_class2();
-		pNode[vec_loc[i]].SetI(90);
+		pNode[vec_loc[i]].SetI(88.1);
 		pNodeSyn[vec_loc[i]]=Excitory;
 		isCoupled[vec_loc[i]]=true;
 	}	

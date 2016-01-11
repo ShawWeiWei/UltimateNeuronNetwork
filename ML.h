@@ -38,6 +38,16 @@ public:
 	static const double RESTORY_CURRENT_FOR_CLASS_II;
 	static const double FIRING_CURRENT_FOR_CLASS_I;
 	static const double FIRING_CURRENT_FOR_CLASS_II;
+
+	static const double C;
+	static const double gK;
+	static const double gL;
+	static const double VK;
+	static const double VCa;
+	static const double VL;
+	static const double V1;
+	static const double V2;
+ 
 private:	
 
 	double n;

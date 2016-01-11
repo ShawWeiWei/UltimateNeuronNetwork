@@ -4,6 +4,7 @@
 #include "utils.h"
 #include <algorithm>
 #include "stdlib.h"
+#include "Constants.h"
 template <typename Node>
 ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int nNeuron,int pML1,bool isRestory):nNode(nNeuron),pTypeI(pML1){
 	
@@ -106,12 +107,23 @@ void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *pCouple){
 				sum+=1.0/(1.0+exp(-(pNode[iIndex].V-threshold)));
 			}
 			pCouple[i]=gc*(V_syn-pNode[i].V)*sum;
+		/*	if(_isnan(pCouple[i])||!_finite(pCouple[i])){
+				printf("What the fuck!\n");
+			}*/
 	}
-
+	
 	//¸üÐÂÔëÉù
 	updateNoise(noise,nNode,noise_intensity);
+//	updatenoise();
 	for(int i=0;i<nNode;++i){
-		pCouple[i]+=noise[i];
+		//double coupleOld=pCouple[i];
+		//double noiseOld=noise[i];
+		pCouple[i]+=noise[i]*Node::C;
+		/*if(_isnan(pCouple[i])||!_finite(pCouple[i])){
+				printf("What the fuck!\n");
+		}*/
 	}
 }
+
+
 

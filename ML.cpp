@@ -4,15 +4,17 @@
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
+#include <float.h>
+
 class SquareNetwork;
-const double C=20.0;
-const double gK=8.0;
-const double gL=2.0;
-const double VK=-84.0;
-const double VCa=120.0;
-const double VL=-60.0;
-const double V1=-1.2;
-const double V2=18.0;
+const double MorrisLecar::C=20.0;
+const double MorrisLecar::gK=8.0;
+const double MorrisLecar::gL=2.0;
+const double MorrisLecar::VK=-84.0;
+const double MorrisLecar::VCa=120.0;
+const double MorrisLecar::VL=-60.0;
+const double MorrisLecar::V1=-1.2;
+const double MorrisLecar::V2=18.0;
 
 const double MorrisLecar::RESTORY_CURRENT_FOR_CLASS_I = 39.7;
 const double MorrisLecar::FIRING_CURRENT_FOR_CLASS_I = 40;
@@ -42,9 +44,22 @@ void MorrisLecar::euler_s(){
 }
 
 void MorrisLecar::euler(double _couplingcurrent){
+	/*if(_isnan(_couplingcurrent)||isfinite()){
+			printf("What the fuck!\n");
+	}*/
+	/*if(_isnan(_couplingcurrent)||!_finite(_couplingcurrent)){
+		printf("What the fuck!\n");
+	}*/
+
 	equation();
-	V+=(DV+_couplingcurrent/C)*dt;
+	//if(_isnan(DV)||_isnan(Dn)){
+	//		printf("What the fuck!\n");
+	//}
+	V+=(DV+(_couplingcurrent/C))*dt;
 	n+=Dn*dt;
+	//if(_isnan(V)){
+	//		printf("What the fuck!\n");
+	//}
 }
 
 

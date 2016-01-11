@@ -9,6 +9,7 @@ public:
 	virtual ~Network();    
 	//Output network for verify
 	void OutputCouple();
+	void OutputCoupleAndPotential();
 	void OutputCoupleIdx();
 	void OutputI();
 	//	void OutputNoise();

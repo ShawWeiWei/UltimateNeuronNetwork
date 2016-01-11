@@ -389,6 +389,36 @@ void Network<Node,CoupleType>::OutputCouple(){
 }
 
 template <typename Node, template<typename> class CoupleType>
+void Network<Node,CoupleType>::OutputCoupleAndPotential(){
+	//Initialize
+	__AlSyncVar();
+	//Create directory
+	char *coupleSeriesFileName=new char[300];
+	_MakePrefix();
+	_MakeFileName(coupleSeriesFileName,"CoupleAndPotentialSeries.dat");
+
+	/*Create file pointer...*/
+	FILE* pOutputCoupleSeries;
+	fopen_s(&pOutputCoupleSeries,coupleSeriesFileName,"w");
+//	fopen_s(&pOutputCouple,coupleFileName,"w");
+	int iter_trans,iter_end;
+	iter_end=2000;
+
+	for(int i=0;i<=iter_end;++i){
+		pCouple->updateCouple(pCouplingCurrents);
+		//__UpdateNoise();
+		_EulerIterate();
+		fprintf(pOutputCoupleSeries,"%lf ",t);
+		for(int j=100;j<101;++j){
+			fprintf(pOutputCoupleSeries,"%lf %lf",pCouplingCurrents[j],pNode[j].V);
+		}
+		fprintf(pOutputCoupleSeries,"\n");
+		//printf("%d\n",i);
+	}
+	fclose(pOutputCoupleSeries);
+}
+
+template <typename Node, template<typename> class CoupleType>
 void Network<Node,CoupleType>::SpiralWave(){
 	/*Initialize...*/
 	__AlSyncVar();
@@ -401,8 +431,8 @@ void Network<Node,CoupleType>::SpiralWave(){
 
 	int iter_trans,iter_end;
 
-	iter_trans=(int)(5000/dt+0.5);
-	iter_end=(int)(8000/dt+0.5);
+	iter_trans=(int)(3000/dt+0.5);
+	iter_end=(int)(5000/dt+0.5);
 
 //	int length=strlen(specification);
 	int iColumn=int(sqrt(nNode)+0.5);
@@ -421,7 +451,6 @@ void Network<Node,CoupleType>::SpiralWave(){
 		pCouple->updateCouple(pCouplingCurrents);
 		//__UpdateNoise();
 		_EulerIterate();
-	
 
 		if(i%200==0){
 			sprintf_s(spiralWaveFileName,300,"%s_t=%.5lf.dat",sPre,t);
@@ -437,10 +466,8 @@ void Network<Node,CoupleType>::SpiralWave(){
 			fprintf(pOutputSpiralWave,"\n");
 			fclose(pOutputSpiralWave);
 		}
-	}
-	
+	}	
 	delete []spiralWaveFileName;
-	
 }
 
 template <typename Node, template<typename> class CoupleType>
@@ -462,7 +489,7 @@ void Network<Node,CoupleType>::SpiralWave(double _begin,double _end,double _dt){
 		if(i>=iBegin&&(i-iBegin)%iDt==0){
 			/*Create file pointer...*/
 			FILE* pOutputSpiralWave;
-			sprintf_s(spiralWaveFileName,"%s_t=%.5lf.dat",pre,t);
+			sprintf_s(spiralWaveFileName,300,"%s_t=%.5lf.dat",sPre,t);
 			//sprintf_s(filename,"%s\\%s_noise=%.5lf_t=%.5lf.dat",direct,specification,t);
 			fopen_s(&pOutputSpiralWave,filename,"w");
 			for(int j=0;j<nNode;++j){
