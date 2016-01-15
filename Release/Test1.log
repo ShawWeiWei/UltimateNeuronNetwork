@@ -1,4 +1,4 @@
-﻿生成启动时间为 2016/1/11 9:42:39。
+﻿生成启动时间为 2016/1/12 8:47:23。
      1>项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”在节点 2 上(Rebuild 个目标)。
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\Test1.pch" /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
@@ -34,34 +34,15 @@
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(65): 参见对正在编译的函数 模板 实例化“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”的引用
+                 Test1.cpp(86): 参见对正在编译的函数 模板 实例化“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(65): 参见对正在编译的类 模板 实例化“ExcitatoryCoupleWithNoise<Node>”的引用
+                 Test1.cpp(86): 参见对正在编译的类 模板 实例化“ExcitatoryCoupleWithNoise<Node>”的引用
                  with
                  [
                      Node=MorrisLecar
-                 ]
-     1>f:\graduation thesis\test1\test1\Network.cpp(404): warning C4101: “iter_trans”: 未引用的局部变量
-                 f:\graduation thesis\test1\test1\Network.cpp(392): 编译类 模板 成员函数“void Network<Node,CoupleType>::OutputCoupleAndPotential(void)”时
-                 with
-                 [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCoupleWithNoise
-                 ]
-                 Test1.cpp(82): 参见对正在编译的函数 模板 实例化“void Network<Node,CoupleType>::OutputCoupleAndPotential(void)”的引用
-                 with
-                 [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCoupleWithNoise
-                 ]
-                 Test1.cpp(74): 参见对正在编译的类 模板 实例化“Network<Node,CoupleType>”的引用
-                 with
-                 [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCoupleWithNoise
                  ]
      1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(18): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
                  f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(7): 编译类 模板 成员函数“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”时
@@ -69,12 +50,12 @@
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(91): 参见对正在编译的函数 模板 实例化“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”的引用
+                 Test1.cpp(112): 参见对正在编译的函数 模板 实例化“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(91): 参见对正在编译的类 模板 实例化“CoupleWithInhibition<Node>”的引用
+                 Test1.cpp(112): 参见对正在编译的类 模板 实例化“CoupleWithInhibition<Node>”的引用
                  with
                  [
                      Node=MorrisLecar
@@ -107,7 +88,7 @@
                  [
                      Node=MorrisLecar
                  ]
-                 f:\graduation thesis\test1\test1\Network.cpp(408): 参见对正在编译的函数 模板 实例化“void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *)”的引用
+                 f:\graduation thesis\test1\test1\Network.cpp(445): 参见对正在编译的函数 模板 实例化“void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *)”的引用
                  with
                  [
                      Node=MorrisLecar
@@ -117,7 +98,7 @@
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(65): 参见对正在编译的函数 模板 实例化“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”的引用
+                 Test1.cpp(86): 参见对正在编译的函数 模板 实例化“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”的引用
                  with
                  [
                      Node=MorrisLecar
@@ -141,4 +122,4 @@
 
 生成成功。
 
-已用时间 00:00:02.99
+已用时间 00:00:07.97

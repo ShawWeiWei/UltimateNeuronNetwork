@@ -60,6 +60,27 @@ void HeterExcitatorySmallWorld(int *aML1,int ML1_size,double *aGc,int GC_size){
 	}
 }
 
+void HeterExcitatorySquare(int *aML1,int ML1_size,double *aGc,int GC_size){
+	printf("HeterExcitatory\n");
+	for(int i=0;i<ML1_size;++i){
+		ExcitatoryCouple<MorrisLecar> ex(16384,aML1[i],true);
+		ex.createConnection("Square");
+			for(int j=0;j<GC_size;++j){
+
+				ex.setCouple(aGc[j],-25,36);
+				Network<MorrisLecar,ExcitatoryCouple> net(&ex);
+				//net.OutputSpikingIndex();
+				//net.OutputAverISI();
+				//net.OutputCV();
+				//net.OutputPhaseAmplitude();
+				//net.OutputAverISIForOneAndTwo();
+				//net.OutputCVForOneAndTwo();
+				net.SpiralWave();
+			}
+		
+	}
+}
+
 void HeterExcitatoryWithNoise(int *aML1,int ML1_size,double*aGc,int GC_size,double *aNoise,int NOISE_size){
 	for(int i=0;i<ML1_size;++i){
 		ExcitatoryCoupleWithNoise<MorrisLecar> ex(16384,aML1[i],true);
@@ -78,8 +99,8 @@ void HeterExcitatoryWithNoise(int *aML1,int ML1_size,double*aGc,int GC_size,doub
 					//net.OutputPhaseAmplitude();
 					//net.OutputAverISIForOneAndTwo();
 					//net.OutputCVForOneAndTwo();
-					//net.SpiralWave();
-					net.OutputCoupleAndPotential();
+					net.SpiralWave();
+					//net.OutputCoupleAndPotential();
 				}
 			}
 		//}
@@ -104,14 +125,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	int nML1=sizeof(aML1)/sizeof(int);
 
-	double aGc[]={0.25};
+	double aGc[]={0.23,0.24,0.26,0.27};
 	int nGc=sizeof(aGc)/sizeof(double);
-	double aNoise[]={0.2};
+	double aNoise[]={0.5,1,1.5,2};
 	int nNoise=sizeof(aNoise)/sizeof(double);
-	HeterExcitatoryWithNoise(aML1,nML1,aGc,nGc,aNoise,nNoise);
+//	HeterExcitatoryWithNoise(aML1,nML1,aGc,nGc,aNoise,nNoise);
 //	HeterInhibitory5(aML1,nML1,aGc,nGc);
 //	HeterExcitatorySparser(aML1,nML1,aGc,nGc);
 //	HeterExcitatorySmallWorld(aML1,nML1,aGc,nGc);
+	HeterExcitatorySquare(aML1,nML1,aGc,nGc);
 	system("PAUSE");
 	return 0;
 }

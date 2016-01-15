@@ -49,15 +49,15 @@ void updateNoise(double *noise,int node,double noise_intensity){
 		noise[i]=sqrt(-4.0*noise_intensity*log_temp)*cos(angle_temp);
 
 		noise[i+1]=sqrt(-4.0*noise_intensity*log_temp)*sin(angle_temp);
-		if(_isnan(noise[i])||!_finite(noise[i])){
-				printf("What the fuck!\n");
-		}
-		if(_isnan(noise[i+1])||!_finite(noise[i+1])){
-				printf("What the fuck!\n");
-		}
+		//if(_isnan(noise[i])||!_finite(noise[i])){
+		//		printf("What the fuck!\n");
+		//}
+		//if(_isnan(noise[i+1])||!_finite(noise[i+1])){
+		//		printf("What the fuck!\n");
+		//}
 
 	}
-	printf("%lf",noise[100]);
+	//printf("%lf",noise[100]);
 }
 
 
