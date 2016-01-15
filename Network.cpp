@@ -188,44 +188,44 @@ void Network<Node,CoupleType>::OutputNoForOneAndTwo(){
 	srand(100);
 	FILE *fp;
 	char filename[100];
-//	sprintf_s(filename,"F:\\config\\ML1=%d_ML2=%d_NO.dat",m_nML1,m_nML2);
-	sprintf_s(filename,"F:\\config\\ML1=%d_NO.dat",percentageOfML1);
+	pCouple->makeFileComps(sCouple,sCon,sComposition,sSpecification);
+	sprintf_s(filename,"%s\\%s_NO.dat",CONFIG_DIRECT,sComposition);
 	fopen_s(&fp,filename,"w");
 	int one[5],two[5];
 	int indexForOne=0,indexForTwo=0;
 	int randNo;
 	const int num=5;
-	if(m_nML2==0){
-		while(indexForOne<num){
-			randNo=rand()%nNode;
-			if(__IsInner(randNo)){
-				if(__IsML1(randNo)){
-					one[indexForOne]=randNo;
-					indexForOne++;
-				}
-			}	
-		}
-		for(int i=0;i<num;++i){
-			fprintf(fp,"%d ",one[i]);
-		}
-		fprintf(fp,"\n");
-	}
-	else if(m_nML1==0){
-		while(indexForTwo<num){
-			randNo=rand()%nNode;
-			if(__IsInner(randNo)){
-				if(__IsML2(randNo)){
-					two[indexForTwo]=randNo;
-					indexForTwo++;
-				}
-			}		
-		}
-		for(int i=0;i<num;++i){
-			fprintf(fp,"%d ",two[i]);
-		}
-		fprintf(fp,"\n");
-	}
-	else{
+	//if(m_nML2==0){
+	//	while(indexForOne<num){
+	//		randNo=rand()%nNode;
+	//		if(__IsInner(randNo)){
+	//			if(__IsML1(randNo)){
+	//				one[indexForOne]=randNo;
+	//				indexForOne++;
+	//			}
+	//		}	
+	//	}
+	//	for(int i=0;i<num;++i){
+	//		fprintf(fp,"%d ",one[i]);
+	//	}
+	//	fprintf(fp,"\n");
+	//}
+	//else if(m_nML1==0){
+	//	while(indexForTwo<num){
+	//		randNo=rand()%nNode;
+	//		if(__IsInner(randNo)){
+	//			if(__IsML2(randNo)){
+	//				two[indexForTwo]=randNo;
+	//				indexForTwo++;
+	//			}
+	//		}		
+	//	}
+	//	for(int i=0;i<num;++i){
+	//		fprintf(fp,"%d ",two[i]);
+	//	}
+	//	fprintf(fp,"\n");
+	//}
+//	else{
 		while(indexForOne<num&&indexForTwo<num){
 			randNo=rand()%nNode;
 			if(__IsInner(randNo)){
@@ -266,7 +266,7 @@ void Network<Node,CoupleType>::OutputNoForOneAndTwo(){
 		}
 		fprintf(fp,"\n");
 		
-	}
+//	}
 	fclose(fp);
 }
 
@@ -277,7 +277,7 @@ void Network<Node,CoupleType>::OutputTimeSeries(){
 	//Initialize
 	__AlSyncVar();
 	//Create directory
-	char timeSeriesFileName=new char[300];
+	char *timeSeriesFileName=new char[300];
 	_MakePrefix();
 	_MakeFileName(timeSeriesFileName,"TimeSeries.dat");
 
@@ -286,18 +286,14 @@ void Network<Node,CoupleType>::OutputTimeSeries(){
 	fopen_s(&pOutputTimeSeries,timeSeriesFileName,"w");
 //	fopen_s(&pOutputCouple,coupleFileName,"w");
 	int iter_trans,iter_end;
-	if(m_nML1==16384){
-	    iter_trans=(int)(2000/dt+0.5);
-	    iter_end=(int)(10000/dt+0.5);
-	}
-	else{
-		iter_trans=(int)(2000/dt+0.5);
-		iter_end=(int)(5000/dt+0.5);
-	}
+	
+	iter_trans=(int)(time_begin/dt+0.5);
+	iter_end=(int)(time_end/dt+0.5);
 	//Calculate
 
 	char inFilename[100];
-	sprintf_s(inFilename,"F:\\config\\ML1=%d_ML2=%d_NO.dat",m_nML1,m_nML2);
+	pCouple->makeFileComps(sCouple,sCon,sComposition,sSpecification);
+	sprintf_s(inFilename,"%s\\%s_NO.dat",CONFIG_DIRECT,sComposition);
 	std::ifstream No(inFilename,std::ios::in);
 	std::vector<int> vec;
 	int inputNo;
@@ -344,18 +340,13 @@ void Network<Node,CoupleType>::OutputCouple(){
 	fopen_s(&pOutputCoupleSeries,coupleSeriesFileName,"w");
 //	fopen_s(&pOutputCouple,coupleFileName,"w");
 	int iter_trans,iter_end;
-	if(m_nML1==16384){
-	    iter_trans=(int)(2000/dt+0.5);
-	    iter_end=(int)(10000/dt+0.5);
-	}
-	else{
-		iter_trans=(int)(2000/dt+0.5);
-		iter_end=(int)(5000/dt+0.5);
-	}
+	iter_trans=(int)(time_begin/dt+0.5);
+	iter_end=(int)(time_end/dt+0.5);
 	//Calculate
 
 	char inFilename[100];
-	sprintf_s(inFilename,"F:\\config\\ML1=%d_ML2=%d_NO.dat",m_nML1,m_nML2);
+	pCouple->makeFileComps(sCouple,sCon,sComposition,sSpecification);
+	sprintf_s(inFilename,"%s\\%s_NO.dat",CONFIG_DIRECT,sComposition);
 	std::ifstream No(inFilename,std::ios::in);
 	std::vector<int> vec;
 	int inputNo;
@@ -402,7 +393,8 @@ void Network<Node,CoupleType>::OutputCoupleAndPotential(){
 	fopen_s(&pOutputCoupleSeries,coupleSeriesFileName,"w");
 //	fopen_s(&pOutputCouple,coupleFileName,"w");
 	int iter_trans,iter_end;
-	iter_end=2000;
+	iter_trans=(int)(time_begin/dt+0.5);
+	iter_end=(int)(time_end/dt+0.5);
 
 	for(int i=0;i<=iter_end;++i){
 		pCouple->updateCouple(pCouplingCurrents);
@@ -431,8 +423,8 @@ void Network<Node,CoupleType>::SpiralWave(){
 
 	int iter_trans,iter_end;
 
-	iter_trans=(int)(3000/dt+0.5);
-	iter_end=(int)(5000/dt+0.5);
+	iter_trans=(int)(time_begin/dt+0.5);
+	iter_end=(int)(time_end/dt+0.5);
 
 //	int length=strlen(specification);
 	int iColumn=int(sqrt(nNode)+0.5);
@@ -603,8 +595,8 @@ void Network<Node,CoupleType>::OutputSpikingIndex(){
 	fopen_s(&pOutputSpikingIndex,sSpikingIndex,"w");
 	int iter_trans,iter_end;
 
-	iter_trans=(int)(5000/dt+0.5);
-	iter_end=(int)(8000/dt+0.5);
+	iter_trans=(int)(time_begin/dt+0.5);
+	iter_end=(int)(time_end/dt+0.5);
 
 	//Calculate
 	for(int i=1;i<=iter_trans;++i){

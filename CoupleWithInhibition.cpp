@@ -34,6 +34,7 @@ CoupleWithInhibition<Node>::CoupleWithInhibition(int nNeuron,int pML1,int pML2):
 		pNode[vec_loc[i]].SetI(100);
 		pNodeSyn[vec_loc[i]]=Inhibitory;
 		isCoupled[vec_loc[i]]=false;
+		strcpy_s(pNode[vec_loc[i]].neuron_model,"InhibitoryNeuron");
 	}
 
 }
