@@ -69,7 +69,7 @@ void HeterExcitatorySquare(int *aML1,int ML1_size,double *aGc,int GC_size){
 
 				ex.setCouple(aGc[j],-25,36);
 				Network<MorrisLecar,ExcitatoryCouple> net(&ex);
-				net.OutputNoForOneAndTwo();
+				//net.OutputNoForOneAndTwo();
 				//net.OutputTimeSeries();
 				//net.OutputSpikingIndex();
 				//net.OutputAverISI();
@@ -77,7 +77,7 @@ void HeterExcitatorySquare(int *aML1,int ML1_size,double *aGc,int GC_size){
 				//net.OutputPhaseAmplitude();
 				//net.OutputAverISIForOneAndTwo();
 			 //   net.OutputCVForOneAndTwo();
-				//net.SpiralWave();
+				net.SpiralWave();
 			}
 		
 	}
@@ -127,7 +127,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	int nML1=sizeof(aML1)/sizeof(int);
 
-	double aGc[]={0.2};//{0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35};
+	double aGc[]={0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35};
 	int nGc=sizeof(aGc)/sizeof(double);
 	double aNoise[]={0.5,1,1.5,2};
 	int nNoise=sizeof(aNoise)/sizeof(double);

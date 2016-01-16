@@ -1,57 +1,48 @@
-﻿生成启动时间为 2015/11/28 13:46:29。
-     1>项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2016/1/16 0:36:48。
+     1>项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”在节点 2 上(Rebuild 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\Test1.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc110.pdb" /Gd /TP /errorReport:prompt Network.cpp Test1.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Release\Test1.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc110.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\Test1.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc110.pdb" /Gd /TP /errorReport:prompt Connection.cpp CoupleWithInhibition.cpp ExcitatoryCouple.cpp ExcitatoryCoupleWithNoise.cpp ML.cpp Network.cpp Test1.cpp utils.cpp
+         Connection.cpp
+     1>Connection.cpp(36): warning C4101: “nTotal”: 未引用的局部变量
+         CoupleWithInhibition.cpp
+         ExcitatoryCouple.cpp
+         ExcitatoryCoupleWithNoise.cpp
+         ML.cpp
          Network.cpp
          Test1.cpp
-     1>f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(43): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-                 f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(29): 编译类 模板 成员函数“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int)”时
+     1>f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(16): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(8): 编译类 模板 成员函数“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int,bool)”时
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(15): 参见对正在编译的函数 模板 实例化“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int)”的引用
+                 Test1.cpp(18): 参见对正在编译的函数 模板 实例化“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int,bool)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(15): 参见对正在编译的类 模板 实例化“ExcitatoryCouple<Node>”的引用
+                 Test1.cpp(18): 参见对正在编译的类 模板 实例化“ExcitatoryCouple<Node>”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-     1>f:\graduation thesis\test1\test1\Network.cpp(653): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-                 f:\graduation thesis\test1\test1\Network.cpp(632): 编译类 模板 成员函数“void Network<Node,CoupleType>::OutputPhaseAmplitude(void)”时
+     1>f:\graduation thesis\test1\test1\ExcitatoryCoupleWithNoise.cpp(18): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\ExcitatoryCoupleWithNoise.cpp(9): 编译类 模板 成员函数“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”时
                  with
                  [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCouple
+                     Node=MorrisLecar
                  ]
-                 Test1.cpp(23): 参见对正在编译的函数 模板 实例化“void Network<Node,CoupleType>::OutputPhaseAmplitude(void)”的引用
+                 Test1.cpp(88): 参见对正在编译的函数 模板 实例化“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”的引用
                  with
                  [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCouple
+                     Node=MorrisLecar
                  ]
-                 Test1.cpp(20): 参见对正在编译的类 模板 实例化“Network<Node,CoupleType>”的引用
+                 Test1.cpp(88): 参见对正在编译的类 模板 实例化“ExcitatoryCoupleWithNoise<Node>”的引用
                  with
                  [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCouple
-                 ]
-     1>f:\graduation thesis\test1\test1\Network.cpp(684): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-     1>f:\graduation thesis\test1\test1\Network.cpp(774): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-                 f:\graduation thesis\test1\test1\Network.cpp(743): 编译类 模板 成员函数“void Network<Node,CoupleType>::OutputAverISI(void)”时
-                 with
-                 [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCouple
-                 ]
-                 Test1.cpp(22): 参见对正在编译的函数 模板 实例化“void Network<Node,CoupleType>::OutputAverISI(void)”的引用
-                 with
-                 [
-                     Node=MorrisLecar,
-                     CoupleType=ExcitatoryCouple
+                     Node=MorrisLecar
                  ]
      1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(18): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
                  f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(7): 编译类 模板 成员函数“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”时
@@ -59,85 +50,113 @@
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(33): 参见对正在编译的函数 模板 实例化“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”的引用
+                 Test1.cpp(114): 参见对正在编译的函数 模板 实例化“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(33): 参见对正在编译的类 模板 实例化“CoupleWithInhibition<Node>”的引用
+                 Test1.cpp(114): 参见对正在编译的类 模板 实例化“CoupleWithInhibition<Node>”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
      1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(25): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-     1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(65): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-                 f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(47): 编译类 模板 成员函数“void CoupleWithInhibition<Node>::createConnection(char *)”时
+     1>f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(68): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(63): 编译类 模板 成员函数“void ExcitatoryCouple<Node>::updateCouple(double *)”时
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(34): 参见对正在编译的函数 模板 实例化“void CoupleWithInhibition<Node>::createConnection(char *)”的引用
+                 f:\graduation thesis\test1\test1\Network.cpp(437): 参见对正在编译的函数 模板 实例化“void ExcitatoryCouple<Node>::updateCouple(double *)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-     1>f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(118): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-                 f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(112): 编译类 模板 成员函数“void ExcitatoryCouple<Node>::updateCouple(double *)”时
+                 f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(8): 编译类 模板 成员函数“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int,bool)”时
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 f:\graduation thesis\test1\test1\Network.cpp(583): 参见对正在编译的函数 模板 实例化“void ExcitatoryCouple<Node>::updateCouple(double *)”的引用
+                 Test1.cpp(18): 参见对正在编译的函数 模板 实例化“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int,bool)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(29): 编译类 模板 成员函数“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int)”时
+     1>f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(65): warning C4101: “nTotal”: 未引用的局部变量
+     1>f:\graduation thesis\test1\test1\ExcitatoryCoupleWithNoise.cpp(104): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\ExcitatoryCoupleWithNoise.cpp(98): 编译类 模板 成员函数“void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *)”时
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(15): 参见对正在编译的函数 模板 实例化“ExcitatoryCouple<Node>::ExcitatoryCouple(int,int)”的引用
+                 f:\graduation thesis\test1\test1\Network.cpp(437): 参见对正在编译的函数 模板 实例化“void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-     1>f:\graduation thesis\test1\test1\ExcitatoryCouple.cpp(115): warning C4101: “nTotal”: 未引用的局部变量
-     1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(136): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-                 f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(128): 编译类 模板 成员函数“void CoupleWithInhibition<Node>::updateCouple(double *)”时
+                 f:\graduation thesis\test1\test1\ExcitatoryCoupleWithNoise.cpp(9): 编译类 模板 成员函数“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”时
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 f:\graduation thesis\test1\test1\Network.cpp(414): 参见对正在编译的函数 模板 实例化“void CoupleWithInhibition<Node>::updateCouple(double *)”的引用
+                 Test1.cpp(88): 参见对正在编译的函数 模板 实例化“ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int,int,bool)”的引用
                  with
                  [
                      Node=MorrisLecar
+                 ]
+     1>f:\graduation thesis\test1\test1\ExcitatoryCoupleWithNoise.cpp(100): warning C4101: “nTotal”: 未引用的局部变量
+     1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(53): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(48): 编译类 模板 成员函数“void CoupleWithInhibition<Node>::setExcInh(const std::vector<_Ty> &)”时
+                 with
+                 [
+                     Node=MorrisLecar,
+                     _Ty=std::vector<int>
+                 ]
+                 f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(72): 参见对正在编译的函数 模板 实例化“void CoupleWithInhibition<Node>::setExcInh(const std::vector<_Ty> &)”的引用
+                 with
+                 [
+                     Node=MorrisLecar,
+                     _Ty=std::vector<int>
                  ]
                  f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(7): 编译类 模板 成员函数“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”时
                  with
                  [
                      Node=MorrisLecar
                  ]
-                 Test1.cpp(33): 参见对正在编译的函数 模板 实例化“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”的引用
+                 Test1.cpp(114): 参见对正在编译的函数 模板 实例化“CoupleWithInhibition<Node>::CoupleWithInhibition(int,int,int)”的引用
                  with
                  [
                      Node=MorrisLecar
                  ]
-     1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(137): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+     1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(101): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+                 f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(94): 编译类 模板 成员函数“void CoupleWithInhibition<Node>::updateCouple(double *)”时
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+                 f:\graduation thesis\test1\test1\Network.cpp(437): 参见对正在编译的函数 模板 实例化“void CoupleWithInhibition<Node>::updateCouple(double *)”的引用
+                 with
+                 [
+                     Node=MorrisLecar
+                 ]
+     1>f:\graduation thesis\test1\test1\CoupleWithInhibition.cpp(102): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+         utils.cpp
+     1>utils.cpp(18): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Graduation Thesis\Test1\x64\Release\Test1.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\Graduation Thesis\Test1\x64\Release\Test1.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Graduation Thesis\Test1\x64\Release\Test1.lib" /MACHINE:X64 x64\Release\Connection.obj
          x64\Release\CoupleWithInhibition.obj
          x64\Release\ExcitatoryCouple.obj
+         x64\Release\ExcitatoryCoupleWithNoise.obj
          x64\Release\ML.obj
          x64\Release\Network.obj
          x64\Release\stdafx.obj
          x64\Release\Test1.obj
+         x64\Release\utils.obj
          正在生成代码
          已完成代码的生成
          Test1.vcxproj -> F:\Graduation Thesis\Test1\x64\Release\Test1.exe
-     1>已完成生成项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”(Build 个目标)的操作。
+     1>已完成生成项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”(Rebuild 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:03.50
+已用时间 00:00:02.48

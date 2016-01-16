@@ -97,16 +97,16 @@ template <typename Node, template<typename> class CoupleType>
 void Network<Node,CoupleType>::_MakePrefix(){
 	pCouple->makeFileComps(sCouple,sCon,sComposition,sSpecification);
 	char direct1[100];
-	sprintf_s(direct1,"F:\\output\\%s",sCouple);
+	sprintf_s(direct1,"%s\\%s",OUTPUT_DIRECT,sCouple);
 	_mkdir(direct1);
 	char direct2[100];
-	sprintf_s(direct2,100,"F:\\output\\%s\\%s",sCouple,sCon);
+	sprintf_s(direct2,100,"%s\\%s\\%s",OUTPUT_DIRECT,sCouple,sCon);
 	_mkdir(direct2);
 	char direct3[100];
-	sprintf_s(direct3,100,"F:\\output\\%s\\%s\\%s",sCouple,sCon,sComposition);
+	sprintf_s(direct3,100,"%s\\%s\\%s\\%s",OUTPUT_DIRECT,sCouple,sCon,sComposition);
 	_mkdir(direct3);
 
-	sprintf_s(sPre,250,"F:\\output\\%s\\%s\\%s\\%s",sCouple,sCon,sComposition,sSpecification);
+	sprintf_s(sPre,250,"%s\\%s\\%s\\%s\\%s",OUTPUT_DIRECT,sCouple,sCon,sComposition,sSpecification);
 }
 
 template <typename Node,template <typename> class CoupleType>
