@@ -10,3 +10,4 @@ const int time_end = 8000;
 
 #define CONFIG_DIRECT "G:\\config"
 #define OUTPUT_DIRECT "G:\\output"
+

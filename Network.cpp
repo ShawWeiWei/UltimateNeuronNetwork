@@ -110,6 +110,12 @@ void Network<Node,CoupleType>::_MakePrefix(){
 }
 
 template <typename Node,template <typename> class CoupleType>
+void Network<Node,CoupleType>::logInfo(){
+	pCouple->makeFileComps(sCouple,sCon,sComposition,sSpecification);
+	printf("%s_%s_%s_%s\n",sCouple,sCon,sComposition,sSpecification);
+}
+
+template <typename Node,template <typename> class CoupleType>
 void Network<Node,CoupleType>::_MakeFileName(char *filename,char *postfix){
 	sprintf_s(filename,300,"%s_%s",sPre,postfix);
 }

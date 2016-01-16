@@ -15,7 +15,8 @@ public:
 	//	void OutputNoise();
 	void OutputNoForOneAndTwo();
 	void PrintTypeNum();
-
+	//log
+	void logInfo();
 	//process
 	void OutputTimeSeries();
 	void SpiralWave(double _begin,double _end,double _dt);
