@@ -12,7 +12,7 @@
 #include "Network.h"
 #include "Network.cpp"
 
-void HeterExcitatorySparser(int *aML1,int ML1_size,double *aGc,int GC_size){
+void HeterExcitatorySparser(int *aML1,int ML1_size,double *aGc,int GC_size,double *aP,int sizeP){
 	printf("HeterExcitatorySparser\n");
 	for(int i=0;i<ML1_size;++i){
 		ExcitatoryCouple<MorrisLecar> ex(16384,aML1[i],true);
@@ -23,12 +23,12 @@ void HeterExcitatorySparser(int *aML1,int ML1_size,double *aGc,int GC_size){
 
 				ex.setCouple(aGc[j],-25,36);
 				Network<MorrisLecar,ExcitatoryCouple> net(&ex);
-				//net.OutputSpikingIndex();
-				//net.OutputAverISI();
-				//net.OutputCV();
-				//net.OutputPhaseAmplitude();
-				//net.OutputAverISIForOneAndTwo();
-				//net.OutputCVForOneAndTwo();
+				net.OutputSpikingIndex();
+				net.OutputAverISI();
+				net.OutputCV();
+				net.OutputPhaseAmplitude();
+				net.OutputAverISIForOneAndTwo();
+				net.OutputCVForOneAndTwo();
 				net.SpiralWave();
 			}
 		}
@@ -122,20 +122,23 @@ void HeterInhibitorySquare(int *aML1,int ML1_size,double*aGc,int GC_size){
 int _tmain(int argc, _TCHAR* argv[])
 {
 	int aML1[]={1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,95,99};
-
 	int nML1=sizeof(aML1)/sizeof(int);
 
 	double aGc[]={0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35};
 	int nGc=sizeof(aGc)/sizeof(double);
+
 	double aNoise[]={0.5,1,1.5,2};
 	int nNoise=sizeof(aNoise)/sizeof(double);
+
+	double aP[]={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5};
+	int sizeP=sizeof(aP)/sizeof(double);
+
 //	HeterExcitatoryWithNoise(aML1,nML1,aGc,nGc,aNoise,nNoise);
 //	HeterInhibitory5(aML1,nML1,aGc,nGc);
 //	HeterExcitatorySparser(aML1,nML1,aGc,nGc);
 //	HeterExcitatorySmallWorld(aML1,nML1,aGc,nGc);
 	HeterExcitatorySquare(aML1,nML1,aGc,nGc);
-	double aP[]={0,0.1,0.2,0.3,0.4,0.5,0.6};
-	int sizeP=sizeof(aP)/sizeof(double);
+	
 	system("PAUSE");
 	return 0;
 }
