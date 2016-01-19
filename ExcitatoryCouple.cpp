@@ -13,7 +13,7 @@ ExcitatoryCouple<Node>::ExcitatoryCouple(int nNeuron,int pML1,bool isRestory):nN
 
 	shuffleNumber(vec_loc,nNode);
 
-	int nML1=nNode*((double)pML1/100.0);
+	int nML1=nNode*((double)pML1/100.0)+0.5;
 	for(int i=0;i<nML1;++i){
 		pNode[vec_loc[i]].set_class1();
 		pNode[vec_loc[i]].SetI(isRestory?(Node::RESTORY_CURRENT_FOR_CLASS_I):(Node::FIRING_CURRENT_FOR_CLASS_I));
