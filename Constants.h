@@ -7,7 +7,9 @@ const int time_end = 8000;
 
 //const char *config_direct = "G:\\config";
 //const char *output_direct = "G:\\output";
+#define SEED_FOR_RANDOM_SHUFFLE 100
 
 #define CONFIG_DIRECT "G:\\config"
-#define OUTPUT_DIRECT "F:\\output"
+#define VALIDATE_DIRECT "G:\\validate"
+#define OUTPUT_DIRECT "G:\\output"
 

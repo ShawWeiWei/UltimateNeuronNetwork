@@ -12,6 +12,7 @@ public:
 	void OutputCoupleAndPotential();
 	void OutputCoupleIdx();
 	void OutputI();
+	void OutputNoByOneAndTwo();
 	//	void OutputNoise();
 	void OutputNoForOneAndTwo();
 	void PrintTypeNum();

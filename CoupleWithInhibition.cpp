@@ -2,6 +2,7 @@
 #include "CoupleWithInhibition.h"
 #include "Connection.h"
 #include <algorithm>
+#include "Constants.h"
 
 template <typename Node>
 CoupleWithInhibition<Node>::CoupleWithInhibition(int nNeuron,int pML1,int pML2):nNode(nNeuron),pTypeI(pML1),pTypeII(pML2){
@@ -14,6 +15,7 @@ CoupleWithInhibition<Node>::CoupleWithInhibition(int nNeuron,int pML1,int pML2):
 		vec_loc[i]=i;
 	}
 	//TODO
+	srand((unsigned int)SEED_FOR_RANDOM_SHUFFLE);
 	random_shuffle(vec_loc.begin(),vec_loc.end());
 
 	int nML1=nNode*((double)pML1/100.0)+0.5;

@@ -144,6 +144,29 @@ void Network<Node,CoupleType>::OutputI(){
 	}
 }
 
+template <typename Node, template<typename> class CoupleType>
+void Network<Node,CoupleType>::OutputNoByOneAndTwo(){
+	//Create directory
+	FILE *fp1,*fp2;
+	char filename[100];
+	pCouple->makeFileComps(sCouple,sCon,sComposition,sSpecification);
+	sprintf_s(filename,"%s\\%s_NoOfTypeI.dat",VALIDATE_DIRECT,sComposition);
+	fopen_s(&fp1,filename,"w");
+
+	sprintf_s(filename,"%s\\%s_NoOfTypeII.dat",VALIDATE_DIRECT,sComposition);
+	fopen_s(&fp2,filename,"w");
+	//Create a file pointer
+	for(int i=0;i<nNode;++i){
+		if(__IsML1(i)){
+				fprintf(fp1,"%d\n",i);
+		}
+		if(__IsML2(i)){
+				fprintf(fp2,"%d\n",i);
+		}
+	}
+	fclose(fp1);
+	fclose(fp2);
+}
 
 
 template <typename Node, template<typename> class CoupleType>
@@ -164,6 +187,7 @@ void Network<Node,CoupleType>::OutputCoupleIdx(){
 	}
 	fclose(pSquare);
 }
+
 
 template <typename Node, template<typename> class CoupleType>
 void Network<Node,CoupleType>::PrintTypeNum(){

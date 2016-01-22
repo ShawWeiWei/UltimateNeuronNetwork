@@ -13,6 +13,7 @@ ExcitatoryCoupleWithNoise<Node>::ExcitatoryCoupleWithNoise(int nNeuron,int pML1,
 	Con=new char[20];
 	vector<int> vec_loc;
 	//´òÂÒ
+	srand((unsigned int)SEED_FOR_RANDOM_SHUFFLE);
 	shuffleNumber(vec_loc,nNeuron);
 
 	int nML1=nNode*((double)pML1/100.0)+0.5;

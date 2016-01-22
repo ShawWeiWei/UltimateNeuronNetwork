@@ -11,7 +11,7 @@
 #include "ExcitatoryCoupleWithNoise.cpp"
 #include "Network.h"
 #include "Network.cpp"
-bool isTest = false;
+bool isTest = true;
 void HeterExcitatorySparser(int *aML1,int ML1_size,double *aGc,int GC_size,double *aP,int sizeP,bool isSpiking,bool isSpiralWave){
 	printf("HeterExcitatorySparser\n");
 	for(int i=0;i<ML1_size;++i){
@@ -76,6 +76,7 @@ void HeterExcitatorySquare(int *aML1,int ML1_size,double *aGc,int GC_size,bool i
 				ex.setCouple(aGc[j],-25,36);
 				Network<MorrisLecar,ExcitatoryCouple> net(&ex);
 				net.logInfo();
+				net.OutputNoByOneAndTwo();
 				if(isSpiking&&!isTest){
 					net.OutputSpikingIndex();
 					net.OutputAverISI();
@@ -213,7 +214,7 @@ void HeterInhibitorySparser(int pInh,double*aGc,int GC_size,double *aP,int sizeP
 }
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int aML1[]={5,10,15,20,30,35,40,50,55,60,65,70,75,80,85,90,95,95};//{1,25,45,99};//{1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,95,99};
+	int aML1[]={1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,99};//{5,10,15,20,30,35,40,50,55,60,65,70,75,80,85,90,95,95};//{1,25,45,99};//{1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,99};
 	int nML1=sizeof(aML1)/sizeof(int);
 
 	double aGc[]={0.27};//{0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35};
@@ -223,14 +224,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	int nNoise=sizeof(aNoise)/sizeof(double);
 	//{0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1};//{0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5};
 	//0.025,0.075,0.125,0.175,0.225,0.275,0.325,0.375,0.425,0.475,
-	double aP[]={0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1};//{0.005,0.015,0.025,0.035,0.045,0.055,0.065,0.075,0.085,0.095};	
+	double aP[]={0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3};//{0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1};//{0.005,0.015,0.025,0.035,0.045,0.055,0.065,0.075,0.085,0.095};	
 	int sizeP=sizeof(aP)/sizeof(double);
 
 //	HeterExcitatoryWithNoise(aML1,nML1,aGc,nGc,aNoise,nNoise);
 //	HeterInhibitory5(aML1,nML1,aGc,nGc);
-	HeterExcitatorySparser(aML1,nML1,aGc,nGc,aP,sizeP,true,false);
+//	HeterExcitatorySparser(aML1,nML1,aGc,nGc,aP,sizeP,false,true);
 //	HeterExcitatorySmallWorld(aML1,nML1,aGc,nGc);
-//	HeterExcitatorySquare(aML1,nML1,aGc,nGc,true,true);
+	HeterExcitatorySquare(aML1,nML1,aGc,nGc,true,true);
 	
 	system("PAUSE");
 	return 0;
