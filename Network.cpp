@@ -160,6 +160,7 @@ void Network<Node,CoupleType>::OutputDegreeDistribution(){
 
 	for(int i=0;i<nNode;++i){
 		fprintf(fp,"%d\n",degree_vec[i]);
+		printf("%d\n",degree_vec[i]);
 	}
 	fclose(fp);
 }

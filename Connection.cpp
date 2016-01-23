@@ -29,6 +29,7 @@ void createRandomConnection(int node,vector<vector<int>> &conVec,char *conSpec,c
 }
 
 void buildSquare(int nNode,vector<vector<int>> &aCon){
+	aCon.clear();
 	aCon.resize(nNode);
 	int iRow,iColumn;
 	int iDimension=sqrt_int(nNode);
@@ -68,6 +69,11 @@ void _buildSquareMatrix(bool ** RelationMatrix,int node){
 	int dimension=sqrt_int(node);
 	int row,column;
 	for(int i=0;i<node;++i){
+		for(int j=0;j<node;++j){
+			RelationMatrix[i][j]=false;
+		}
+	}
+	for(int i=0;i<node;++i){
 		row=i/dimension;
 		column=i%dimension;
 		//up
@@ -97,6 +103,7 @@ void _buildSquareMatrix(bool ** RelationMatrix,int node){
 }
 
 void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
+	aCon.clear();
 	aCon.resize(nNode);
 	int nDimension=sqrt_int(nNode);
 	
@@ -136,6 +143,7 @@ void buildSmallWorld(int nNode,double _rewiring,vector<vector<int>> &aCon){
 }
 
 void buildSparser(int nNode,double _rewiring,vector<vector<int>> &aCon){
+	aCon.clear();
 	aCon.resize(nNode);
 	int nDimension=sqrt_int(nNode);
 

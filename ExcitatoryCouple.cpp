@@ -35,11 +35,13 @@ ExcitatoryCouple<Node>::~ExcitatoryCouple(){
 
 template <typename Node>
 void ExcitatoryCouple<Node>::createConnection(char *type){
+	aExc.clear();
 	createRegularConnection(nNode,aExc,Con,type);
 }
 
 template <typename Node>
 void ExcitatoryCouple<Node>::createConnection(char *type,double _rewiring){
+	aExc.clear();
 	createRandomConnection(nNode,aExc,Con,type,_rewiring);
 }
 	

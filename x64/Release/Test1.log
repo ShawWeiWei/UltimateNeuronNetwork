@@ -1,4 +1,4 @@
-﻿生成启动时间为 2016/1/23 22:26:07。
+﻿生成启动时间为 2016/1/23 22:49:01。
      1>项目“F:\Graduation Thesis\Test1\Test1\Test1.vcxproj”在节点 2 上(Rebuild 个目标)。
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Release\Test1.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc110.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
@@ -218,4 +218,4 @@
 
 生成成功。
 
-已用时间 00:00:03.12
+已用时间 00:00:02.81
