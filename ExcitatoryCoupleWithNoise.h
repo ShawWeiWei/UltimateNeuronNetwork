@@ -14,12 +14,11 @@ public:
 		noise_intensity=_noise_intensity;
 	}
 	void makeFileComps(char *sCouple,char *sCon,char *sComposition,char *sSpecification);
-	//void makeCoupleName(char *sCouple);
-	//void makeConnectionName(char *sCon);
-	//void makeCompositionName(char *sComposition);
-	//void makeSpecificationName(char *sSpecification);
 	void updateCouple(double *pCouple);
 	void updatenoise();
+	void outputDegreeDistribution(vector<int> &degree);
+
+
 	int getNum()  const{
 		return nNode;
 	}

@@ -146,3 +146,15 @@ void CoupleWithInhibition<Node>::makeFileComps(char *sCouple,char *sCon,char *sC
 	sprintf_s(sComposition,30,"pML1=%d%%_pML2=%d%%",pTypeI,pTypeII);
 	sprintf_s(sSpecification,100,"gc_exc=%.5lf_v_exc=%.5lf_gc_inh=%.5lf_v_inh=%.5lf_threshold=%.5lf",gc_exc,Vsyn_exc,gc_inh,Vsyn_inh,threshold);
 }
+
+template <typename Node>
+void CoupleWithInhibition<Node>::outputDegreeDistribution(vector<int> &degree){
+	degree.resize(nNode);
+	for(int i=0;i<nNode;++i){
+		if(isCoupled[i]){
+			degree[i]=aExc[i].size()+aInh[i].size();
+		}else{
+			degree[i]=0;
+		}
+	}
+}

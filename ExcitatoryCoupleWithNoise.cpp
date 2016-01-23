@@ -126,5 +126,13 @@ void ExcitatoryCoupleWithNoise<Node>::updateCouple(double *pCouple){
 	}
 }
 
+template <typename Node>
+void ExcitatoryCoupleWithNoise<Node>::outputDegreeDistribution(vector<int> &degree){
+	degree.resize(nNode);
+	for(int i=0;i<nNode;++i){
+		degree[i]=aExc[i].size();
+	}
+}
+
 
 

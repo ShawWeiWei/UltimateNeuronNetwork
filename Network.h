@@ -13,6 +13,7 @@ public:
 	void OutputCoupleIdx();
 	void OutputI();
 	void OutputNoByOneAndTwo();
+	void OutputDegreeDistribution();
 	//	void OutputNoise();
 	void OutputNoForOneAndTwo();
 	void PrintTypeNum();
@@ -31,6 +32,8 @@ public:
 	void OutputCVForOneAndTwo();
 	//dive in
 	void OutputCouplePerSpike();	
+
+	
 protected:
 	
 	void _EulerIterate();

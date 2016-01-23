@@ -22,6 +22,7 @@ void HeterExcitatorySparser(int *aML1,int ML1_size,double *aGc,int GC_size,doubl
 				ex.setCouple(aGc[j],-25,36);
 				Network<MorrisLecar,ExcitatoryCouple> net(&ex);
 				net.logInfo();
+				net.OutputDegreeDistribution();
 				if(isSpiking&&!isTest){
 					net.OutputSpikingIndex();
 					net.OutputAverISI();
@@ -224,14 +225,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	int nNoise=sizeof(aNoise)/sizeof(double);
 	//{0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1};//{0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5};
 	//0.025,0.075,0.125,0.175,0.225,0.275,0.325,0.375,0.425,0.475,
-	double aP[]={0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3};//{0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1};//{0.005,0.015,0.025,0.035,0.045,0.055,0.065,0.075,0.085,0.095};	
+	double aP[]={0,0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1};
+	//{0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3};//{0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1};//{0.005,0.015,0.025,0.035,0.045,0.055,0.065,0.075,0.085,0.095};	
 	int sizeP=sizeof(aP)/sizeof(double);
 
 //	HeterExcitatoryWithNoise(aML1,nML1,aGc,nGc,aNoise,nNoise);
 //	HeterInhibitory5(aML1,nML1,aGc,nGc);
-//	HeterExcitatorySparser(aML1,nML1,aGc,nGc,aP,sizeP,false,true);
+	HeterExcitatorySparser(aML1,nML1,aGc,nGc,aP,sizeP,false,true);
 //	HeterExcitatorySmallWorld(aML1,nML1,aGc,nGc);
-	HeterExcitatorySquare(aML1,nML1,aGc,nGc,true,true);
+//	HeterExcitatorySquare(aML1,nML1,aGc,nGc,true,true);
+
+
 	
 	system("PAUSE");
 	return 0;

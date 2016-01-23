@@ -13,6 +13,7 @@ public:
 	void setCouple(double _gc,double _threshold,double _V_syn);
 	void makeFileComps(char *sCouple,char *sCon,char *sComposition,char *sSpecification);
 	void updateCouple(double *pCouple);
+	void outputDegreeDistribution(vector<int> &degree);
 
 	int getNum()  const{
 		return nNode;

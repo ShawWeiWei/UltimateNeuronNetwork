@@ -10,6 +10,6 @@ const int time_end = 8000;
 #define SEED_FOR_RANDOM_SHUFFLE 100
 
 #define CONFIG_DIRECT "G:\\config"
-#define VALIDATE_DIRECT "G:\\validate"
+#define VALIDATE_DIRECT "F:\\validate"
 #define OUTPUT_DIRECT "G:\\output"
 

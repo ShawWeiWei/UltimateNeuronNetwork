@@ -75,3 +75,11 @@ void ExcitatoryCouple<Node>::updateCouple(double *pCouple){
 			pCouple[i]=gc*(V_syn-pNode[i].V)*sum;
 	}
 }
+
+template <typename Node>
+void ExcitatoryCouple<Node>::outputDegreeDistribution(vector<int> &degree){
+	degree.resize(nNode);
+	for(int i=0;i<nNode;++i){
+			degree[i]=aExc[i].size();
+	}
+}

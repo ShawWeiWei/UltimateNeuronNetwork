@@ -16,6 +16,7 @@ public:
 	void createConnection(char *type,double _rewiring);
 	void setCouple(double _gc_exc,double _gc_inh,double _threshold,double _Vsyn_exc,double _Vsyn_inh);
 	void updateCouple(double *pCouple);
+	void outputDegreeDistribution(vector<int> &degree);
 
 	//Verify
 	void OutputConn();

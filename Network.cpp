@@ -145,6 +145,26 @@ void Network<Node,CoupleType>::OutputI(){
 }
 
 template <typename Node, template<typename> class CoupleType>
+void Network<Node,CoupleType>::OutputDegreeDistribution(){
+	//Create directory
+	char filename[100];
+	pCouple->makeFileComps(sCouple,sCon,sComposition,sSpecification);
+	sprintf_s(filename,"%s\\%s_%s_Degree.dat",VALIDATE_DIRECT,sComposition,sCon);
+
+	//Create a file pointer
+	FILE *fp;
+	fopen_s(&fp,filename,"w");
+
+	vector<int> degree_vec;
+	pCouple->outputDegreeDistribution(degree_vec);
+
+	for(int i=0;i<nNode;++i){
+		fprintf(fp,"%d\n",degree_vec[i]);
+	}
+	fclose(fp);
+}
+
+template <typename Node, template<typename> class CoupleType>
 void Network<Node,CoupleType>::OutputNoByOneAndTwo(){
 	//Create directory
 	FILE *fp1,*fp2;
