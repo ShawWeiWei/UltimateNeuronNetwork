@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "Constants.h"
 
+
 template <typename Node>
 ExcitatoryCouple<Node>::ExcitatoryCouple(int nNeuron,int pML1,bool isRestory):nNode(nNeuron),pTypeI(pML1){
 	
@@ -13,6 +14,7 @@ ExcitatoryCouple<Node>::ExcitatoryCouple(int nNeuron,int pML1,bool isRestory):nN
 	Con=new char[20];
 	vector<int> vec_loc;
 	srand((unsigned int)SEED_FOR_RANDOM_SHUFFLE);
+//	printf("%d\n",SEED_FOR_RANDOM_SHUFFLE);
 	shuffleNumber(vec_loc,nNode);
 
 	int nML1=nNode*((double)pML1/100.0)+0.5;

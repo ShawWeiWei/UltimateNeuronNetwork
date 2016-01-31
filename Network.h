@@ -32,6 +32,7 @@ public:
 	void OutputCVForOneAndTwo();
 	//dive in
 	void OutputCouplePerSpike();	
+	void OutputSnapShotBySeed();
 
 	
 protected:

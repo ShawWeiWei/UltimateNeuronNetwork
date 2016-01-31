@@ -45,7 +45,7 @@ void Network<Node,CoupleType>::__AlSyncVar(){
 	srand((unsigned int)100);               //random generator seed is 100
 	for(int i=0;i<nNode;++i)
 		pNode[i].RandVar();
-	srand(100);
+//	srand(100);
 }
 
 template <typename Node, template<typename> class CoupleType>
@@ -534,7 +534,7 @@ void Network<Node,CoupleType>::SpiralWave(double _begin,double _end,double _dt){
 			FILE* pOutputSpiralWave;
 			sprintf_s(spiralWaveFileName,300,"%s_t=%.5lf.dat",sPre,t);
 			//sprintf_s(filename,"%s\\%s_noise=%.5lf_t=%.5lf.dat",direct,specification,t);
-			fopen_s(&pOutputSpiralWave,filename,"w");
+			fopen_s(&pOutputSpiralWave,spiralWaveFileName,"w");
 			for(int j=0;j<nNode;++j){
 				fprintf(pOutputSpiralWave,"%lf ",pNode[j].V);
 				if(j%iDimension==iColumn-1) fprintf(pOutputSpiralWave,"\n");
@@ -1070,6 +1070,59 @@ void Network<Node,CoupleType>::OutputCouplePerSpike(){
 	delete []sCouplingCurrents;
 	delete []sCouplingCurrentsPerSpike;
 	delete []sSpikingIndex;
+}
+
+template <typename Node, template<typename> class CoupleType>
+void Network<Node,CoupleType>::OutputSnapShotBySeed(){
+	/*Initialize...*/
+	__AlSyncVar();
+	/*Create directory...*/
+
+	_MakePrefix();
+
+	char *spiralWaveFileName=new char[300];
+
+
+	int iter_trans,iter_end;
+
+	iter_trans=(int)((time_begin-2000)/dt+0.5);
+	iter_end=(int)((time_end-2000)/dt+0.5);
+
+//	int length=strlen(specification);
+	int iColumn=int(sqrt(nNode)+0.5);
+	/*Create file pointer...*/
+	FILE* pOutputSpiralWave;
+
+	int iDimension=int(sqrt((double)nNode)+0.5);
+	printf("%d\n",iDimension);
+	for(int i=1;i<=iter_trans;++i){
+		pCouple->updateCouple(pCouplingCurrents);
+		//__UpdateNoise();
+		_EulerIterate();
+	}
+
+	for(int i=iter_trans+1;i<iter_end;++i){
+		pCouple->updateCouple(pCouplingCurrents);
+		//__UpdateNoise();
+		_EulerIterate();
+
+		if(i%200==0){
+			sprintf_s(spiralWaveFileName,300,"%s_Seed=%d_t=%.5lf.dat",sPre,SEED_FOR_RANDOM_SHUFFLE,t);
+		    fopen_s(&pOutputSpiralWave,spiralWaveFileName,"w");	
+
+			for(int j=0;j<nNode;++j){
+				fprintf(pOutputSpiralWave,"%lf ",pNode[j].V);
+				if(j%iDimension==iDimension-1){
+					fprintf(pOutputSpiralWave,"\n");
+
+				}
+			}
+			fprintf(pOutputSpiralWave,"\n");
+			fclose(pOutputSpiralWave);
+			//break;
+		}
+	}	
+	delete []spiralWaveFileName;
 }
 //double SquareNetwork::SyncFactor(){
 //	double *sum_VikSquare=new double[nNode];

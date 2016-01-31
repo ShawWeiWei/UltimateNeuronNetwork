@@ -111,7 +111,7 @@ void CoupleWithInhibition<Node>::updateCouple(double *pCouple){
 				iIndex=aInh[i][j];
 				sumInh+=1.0/(1.0+exp(-(pNode[iIndex].V-threshold)));
 			}
-			pCouple[i]=gc_exc*(Vsyn_exc-pNode[i].V)*sumExc+gc_inh*(Vsyn_inh-pNode[i].V)*sumExc;
+			pCouple[i]=gc_exc*(Vsyn_exc-pNode[i].V)*sumExc+gc_inh*(Vsyn_inh-pNode[i].V)*sumInh;
 		}
 		else{
 			pCouple[i]=0.0;
